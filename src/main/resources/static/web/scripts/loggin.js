@@ -110,17 +110,18 @@ jQuery(document).ready(function($) {
         postNewGame();
     })
 
-    function postNewGame (userName){
-        $.post( "/api/games",{ Username: userName })
-            .done(function( ) {
+    function postNewGame (response){
+        $.post( "/api/games")
+            .done(function(response ) {
                 console.log( "This is a new game.");
-                location.reload();
-
-
-
+                console.log(response);
+                //location.reload();
+                window.location.href = "game.html?=p"+ response.gpid;
             })
-            .fail(function( jqXHR, textStatus ) {
-                console.log( "error" + textStatus );
-            });}
+            .fail(function(response) {
+                console.log( "fatal error in creation game" + response );
+            });
+        }
+
 });
 
