@@ -1,0 +1,47 @@
+
+body{
+    background-image:url("../images/fondo.jpg");}
+
+table {
+    border: 2px black;
+    width: 50%;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+tr {
+    border: 2px black;
+    width: 10%;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+th {
+    border: 1px solid black;
+    text-align: center;
+}
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+.login{
+    border: 0.5px solid black;
+    width: 50%;
+
+    }
+.ul-table{
+    margin-left: 24%;
+}
+
+h1{
+   font-family: "Ebrima";
+    text-align: center;
+}
+
+h2{
+    font-family: "revert";
+}
+
+h3{
+    font-family: "Yu Gothic Light";
+}

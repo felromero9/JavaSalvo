@@ -1,0 +1,40 @@
+.tableShipLocation {
+    border: 2px solid darkgreen;
+    width: 80%;
+    margin-left: 2px;
+}
+
+.tableSalvoLocation {
+    border: 2px solid darkgreen;
+    width: 80%;
+    margin-left: 2px;
+}
+
+
+th {
+    border: 2px solid black;
+    text-align: center;
+}
+td {
+    border: 2px solid darkblue;
+    text-align: center;
+}
+tr th:first-child{
+    background-color: black;
+}
+
+.my-ship{
+    background-color: black;
+}
+
+.my-salvo{
+    color: blue;
+    font-weight: bold;
+}
+.opponent-salvo{
+    color: red;
+    font-weight: bold;
+}
+.hit-my-ship{
+ color:greenyellow;
+}
