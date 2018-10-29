@@ -114,7 +114,7 @@ jQuery(document).ready(function($) {
         $.post( "/api/games",{ Username: userName })
             .done(function( ) {
                 console.log( "This is a new game.");
-               // location.reload();
+                location.reload();
 
 
 
