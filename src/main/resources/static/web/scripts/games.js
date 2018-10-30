@@ -90,6 +90,7 @@ $(function () {
             $("#newGameButton").show();
             $('#title').hide();
             $('#welcome').show();
+            $('#newgame').show();
 
         }
         else{
@@ -98,6 +99,7 @@ $(function () {
             $("#newGameButton").hide();
             $('#title').hide();
             $('#welcome').show();
+            $('#newgame').hide();
 
 
         }

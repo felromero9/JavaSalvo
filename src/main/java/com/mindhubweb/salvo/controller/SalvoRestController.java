@@ -81,24 +81,37 @@ public class SalvoRestController {
     return new ResponseEntity<>(makeMap("id", newPlayer.getId()), HttpStatus.CREATED);
   }
 
+//-----------------//
 
 
-/*
 
   @PostMapping(path = "/api/game/{gameId}/players")
-  public ResponseEntity<Map<String, Object>> createGamePlayer(@RequestParam String userName, @RequestParam long id){
-    Player player = playerRepository.findByUserName(userName);
-    if (player != null) {
-      return new ResponseEntity<>(makeMap("error", "No user name."), HttpStatus.CONFLICT);//409
-    }
-    Game newGame = gameRepository.save(new Game(LocalDateTime.now()));
-    return new ResponseEntity<>(makeMap("id", newGame.getId()), HttpStatus.CREATED);
+  public ResponseEntity<Map<String, Object>> createGamePlayer(@PathVariable Long gameId,
+                                                              Authentication authentication){
+      if (isGuest(authentication)){
+        return new ResponseEntity<>(makeMap("error", "No one is conected"), HttpStatus.UNAUTHORIZED);
+      }
+      Optional<Game> game = gameRepository.findById(gameId);
+      if(!game.isPresent()){
+        return new ResponseEntity<>(makeMap("error", "No such game"), HttpStatus.FORBIDDEN);
+      }
+      if(game.get().getGamePlayers().size()>1){
+        return new ResponseEntity<>(makeMap("error", "Game is full"), HttpStatus.FORBIDDEN);
+      }
+      Player player = playerRepository.findByUserName(authentication.getName());
+      GamePlayer newGamePlayer = gamePlayerRepository.save(new GamePlayer(player,game.get(),LocalDateTime.now()) );
+
+    return new ResponseEntity<>(makeMap("id", newGamePlayer.getId()), HttpStatus.CREATED);
   }
-*/
+
+
+//-------------------------------------------------------------
+
+
 
 
   @GetMapping("/game_view/{gamePlayerId}")
-    public ResponseEntity < Map<String, Object> > getGamePlayer(@PathVariable Long gamePlayerId, Authentication authentication){
+    public ResponseEntity < Map<String, Object> > joinGame(@PathVariable Long gamePlayerId, Authentication authentication){
         Optional<GamePlayer> gamePlayer = gamePlayerRepository.findById(gamePlayerId);
         if(!gamePlayer.isPresent()){
             return new ResponseEntity<>(makeMap("error", "empty gameplayer"), HttpStatus.UNAUTHORIZED);
