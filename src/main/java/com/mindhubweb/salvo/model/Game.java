@@ -17,7 +17,7 @@ public class Game {
     private Long id;
 
     // here star the relationships (de player a gameplayer)
-    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     Set<GamePlayer> gamePlayers;
     // end relationships
 

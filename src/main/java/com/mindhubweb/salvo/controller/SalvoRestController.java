@@ -96,33 +96,6 @@ public class SalvoRestController {
   }
 */
 
- /* @PostMapping(path = "/player")
-  public ResponseEntity<Map<String, Object>> createGamePlayer(@RequestParam String userName, @RequestParam long id, Authentication authentication){
-    if (isGuest(authentication)) {
-      return new ResponseEntity<>()
-    }
-      Player player = playerRepository.findByUserName(userName);
-      if (player != null) {
-        return new ResponseEntity<>(makeMap("error", "No user name."), HttpStatus.CONFLICT);//409
-      }
-      Game newGame = gameRepository.save(new Game(LocalDateTime.now()));
-      return new ResponseEntity<>(makeMap("id", newGame.getId()), HttpStatus.CREATED);
-    }
-
-    else
-      dto.put("user", playerRepository.findByUserName(authentication.getName()).currentPlayerDTO());
-
-
-  }*/
-
-
-
-
-
-
-
-
-
 
   @GetMapping("/game_view/{gamePlayerId}")
     public ResponseEntity < Map<String, Object> > getGamePlayer(@PathVariable Long gamePlayerId, Authentication authentication){

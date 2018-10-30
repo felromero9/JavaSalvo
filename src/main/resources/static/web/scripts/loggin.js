@@ -116,10 +116,11 @@ jQuery(document).ready(function($) {
                 console.log( "This is a new game.");
                 console.log(response);
                 //location.reload();
-                window.location.href = "game.html?=p"+ response.gpid;
+               window.location.href = "game.html?gp="+ response.gpid;
             })
             .fail(function(response) {
                 console.log( "fatal error in creation game" + response );
+                console.log(response);
             });
         }
 
