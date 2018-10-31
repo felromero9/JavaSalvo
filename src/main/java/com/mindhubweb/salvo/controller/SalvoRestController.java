@@ -85,7 +85,7 @@ public class SalvoRestController {
 
 
 
-  @PostMapping(path = "/api/game/{gameId}/players")
+  @PostMapping("/game/{gameId}/players")
   public ResponseEntity<Map<String, Object>> createGamePlayer(@PathVariable Long gameId,
                                                               Authentication authentication){
       if (isGuest(authentication)){
@@ -101,7 +101,7 @@ public class SalvoRestController {
       Player player = playerRepository.findByUserName(authentication.getName());
       GamePlayer newGamePlayer = gamePlayerRepository.save(new GamePlayer(player,game.get(),LocalDateTime.now()) );
 
-    return new ResponseEntity<>(makeMap("id", newGamePlayer.getId()), HttpStatus.CREATED);
+    return new ResponseEntity<>(makeMap("gpid", newGamePlayer.getId()), HttpStatus.CREATED);
   }
 
 

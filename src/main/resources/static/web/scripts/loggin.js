@@ -67,8 +67,8 @@ jQuery(document).ready(function($) {
                         app.games = json.games;
                         app.playerWelcome = json.user.userName;
                         app.myPlayerId = json.user.id;
-
-                        checkIfGuest(json);
+                        app.user = json.user
+                        checkIfGuest();
                      })
                     .fail(function (error)
                     {
@@ -123,6 +123,34 @@ jQuery(document).ready(function($) {
                 console.log(response);
             });
         }
+
+    //JOIN GAME
+    $('#app').on('click', '.joinGame', function(){
+         console.log("holaaaa");
+          var joinGameData = $(this).data('joingpid');
+         joinGame(joinGameData);
+    })
+
+    function joinGame(gameDataId){
+
+
+        $.post( "/api/game/"+gameDataId+"/players")
+            .done(function(gameId) {
+                console.log( "This is a join game.");
+                //console.log(response);
+                //location.reload();
+              // window.location.href = "game.html?gp="+ response.gpid;
+            })
+            .fail(function(response) {
+                console.log( "fatal error in join game" + response );
+                console.log(response);
+                console.log(gameDataId);
+            });
+
+
+
+
+    }
 
 });
 

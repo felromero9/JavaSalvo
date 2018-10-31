@@ -74,7 +74,7 @@
 
                         v-if="game.gamePlayers[1] && game.gamePlayers[0].player.id==myPlayerId">
                         <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
-                            {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
+                            GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
                         </a>
                     </li>
 
@@ -91,11 +91,14 @@
                     <li v-else-if="game.gamePlayers[0].player.id==myPlayerId">
                         <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
                             GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} is waiting for an zombie
+                            <!-- <button type="button" id="joinGame">join and fight</button>-->
                         </a>
                     </li>
 
-                    <li  v-else>
-                        GAME #{{game.id}}: {{game.gamePlayers[0].player.username}} vs waiting for an zombie
+                    <li  v-else-if="game.gamePlayers.length < 2 && game.gamePlayers[0].player.id != myPlayerId ">
+
+                        GAME #{{game.id}} : {{game.gamePlayers[0].player.username}} vs waiting for an zombie
+                        <button class="joinGame" type="button" :data-joinGpId="game.id" :id="'joinGame'+game.id" style="display: none">join and fight</button>
                     </li>
                 </ul>
 

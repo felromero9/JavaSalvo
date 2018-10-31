@@ -10,11 +10,14 @@ $(function () {
                 games: [],
                 dataObjectsOfPlayers : [],
                 playerWelcome:"",
-                myPlayerId:""
+                myPlayerId:"",
+                user:"",
+                gamePlayerId:""
 
             }
         });
 //llamado del fetch
+
         fetchJson("http://localhost:8080/api/games", {
             method: 'GET',
 
@@ -25,9 +28,13 @@ $(function () {
                processPoints(json);
                app.playerWelcome = json.user.userName;
                app.myPlayerId = json.user.id;
-                checkIfGuest(json);
-                console.log("y que onda"+json.user!=="Guest")
+               app.gamePlayerId = json.games.id;
+               app.user = json.user
+               console.log("y que onda"+json.user!=="Guest")
 
+
+            }).then(function(){
+                checkIfGuest();
             }).catch(function (error) {
             console.log("FATAL error!");
         });
@@ -83,14 +90,15 @@ $(function () {
 
 });
 
-    function checkIfGuest(json){
-        if (json.user!=="Guest"){
+    function checkIfGuest(){
+        if (app.user!=="Guest"){
             $("#logoutButton").show();
             $("#myForm").hide();
             $("#newGameButton").show();
             $('#title').hide();
             $('#welcome').show();
             $('#newgame').show();
+            $('.joinGame').show();
 
         }
         else{
@@ -100,6 +108,7 @@ $(function () {
             $('#title').hide();
             $('#welcome').show();
             $('#newgame').hide();
+            $('.joinGame').hide();
 
 
         }
