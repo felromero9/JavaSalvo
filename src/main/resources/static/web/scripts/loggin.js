@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
 
     function postNewGame (response){
         $.post( "/api/games")
-            .done(function(response ) {
+            .done(function(response) {
                 console.log( "This is a new game.");
                 console.log(response);
                 //location.reload();
@@ -135,16 +135,17 @@ jQuery(document).ready(function($) {
 
 
         $.post( "/api/game/"+gameDataId+"/players")
-            .done(function(gameId) {
+            .done(function(response) {
                 console.log( "This is a join game.");
-                //console.log(response);
+                 console.log("the game is" + gameDataId);
+                console.log(response);
                 //location.reload();
-              // window.location.href = "game.html?gp="+ response.gpid;
+              window.location.href = "game.html?gp="+ response.gpid;
             })
             .fail(function(response) {
                 console.log( "fatal error in join game" + response );
                 console.log(response);
-                console.log(gameDataId);
+
             });
 
 

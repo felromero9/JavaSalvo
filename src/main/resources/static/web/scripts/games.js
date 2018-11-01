@@ -35,6 +35,7 @@ $(function () {
 
             }).then(function(){
                 checkIfGuest();
+
             }).catch(function (error) {
             console.log("FATAL error!");
         });
