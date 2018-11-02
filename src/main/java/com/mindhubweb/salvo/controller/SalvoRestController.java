@@ -104,40 +104,33 @@ public class SalvoRestController {
     return new ResponseEntity<>(makeMap("gpid", newGamePlayer.getId()), HttpStatus.CREATED);
   }
 
-
-
-
-// -------------------------------------------------------------------------
-/*@PostMapping("/games/players/{gamePlayerId}/ships")
-public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Ship ship,
+@PostMapping("/games/players/{gamePlayerId}/ships")
+public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> ships,
                                                         @PathVariable Long gamePlayerId,
                                                        Authentication authentication){
 
-    //debo crear un DTo para crear nuevas celdas de los ships
-Ship newShip(Ship ship){
-
-    Ship ship = new Ship(ship.getType())
-
+ if (isGuest(authentication)){
+    return new ResponseEntity<>(makeMap("error", "No one is here"), HttpStatus.UNAUTHORIZED);
   }
 
-  if (isGuest(authentication)){
-    return new ResponseEntity<>(makeMap("error", "No one is logged"), HttpStatus.UNAUTHORIZED);
-  }
   Optional<GamePlayer> gamePlayer = gamePlayerRepository.findById(gamePlayerId);
   if(!gamePlayer.isPresent()){
     return new ResponseEntity<>(makeMap("error", "No gamePlayerID"), HttpStatus.UNAUTHORIZED);
   }
   // debo comparar el gameplayerId actual con el gamePlayer Id de cada usuario, si no son igual UNAUTHORIZED
-  if(gamePlayer.get().getId() != )
+  if(!gamePlayer.get().getPlayer().getUserName().equals(authentication.getName())){
+    return new ResponseEntity<>(makeMap("error", "this is not your game "), HttpStatus.UNAUTHORIZED);
+  }
+// debo traer los ships del game
+  if(gamePlayer.get().getShips().size() > 0 || ships.size()!= 5){
+    return new ResponseEntity<>(makeMap("error", "u already have ships or missing ships "), HttpStatus.UNAUTHORIZED); // me dede retornar siempre algo
+  }
 
+  gamePlayer.get().addShips(ships);// adjunto los ships como se crean en el repository
+  gamePlayerRepository.save(gamePlayer.get());
 
-}*/
-
-
-  //-----------------------------------------------------
-
-
-
+  return  new ResponseEntity<>(makeMap("newSet","created"), HttpStatus.CREATED);
+}
 
 
   @GetMapping("/game_view/{gamePlayerId}")

@@ -147,11 +147,43 @@ jQuery(document).ready(function($) {
                 console.log(response);
 
             });
-
-
-
-
     }
+
+
+
+    // JOIN SHIPS
+    var newShips = [{ "type": "DESTROYER", "locations": ["A1", "B1", "C1"] },
+                    { "type": "PATROLBOAT", "locations": ["H5", "H6"] },
+                    { "type": "DESTROYER", "locations": ["A2", "B2", "C2"]},
+                    { "type": "DESTROYER", "locations": ["A3", "B3", "C3"]},
+                    { "type": "DESTROYER", "locations": ["A5", "B1", "C5"]}
+                    ];
+
+    $('#joinShip').click(function(){
+            joinShips(app.myGpId);
+            console.log("it works");
+           // var gamePlayerId = myGpId
+        })
+
+        function joinShips (myGpId){
+            $.post({
+                url:"/api/games/players/"+myGpId+"/ships",
+                data: JSON.stringify(newShips),
+                dataType: "text",
+                contentType: "application/json"
+
+            })
+                .done(function(response) {
+                    console.log( "New set ships added");
+                    console.log(response);
+
+                })
+                .fail(function(response) {
+                    console.log( "fatal error cant join ships" + response.status );
+                    console.log(response);
+                });
+            }
+
 
 });
 
