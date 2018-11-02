@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>GAME</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="dist/normalize.css" />
+    <link rel="stylesheet" href="dist/gridstack.css" />
+    <link rel="stylesheet" href="dist/gridstack-extra.css" />
+    <link rel="stylesheet" href="dist/style.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
 
@@ -18,45 +22,69 @@
         <button type="button" id="logoutButton" class="btn btn-primary">  <i class="fas fa-sign-in-alt"></i>Logout</button>
 
     </div>
-<div id="app">
+
+    <!-- div solo para colocar el borde y posicionar en base a la altura y anchura-->
+    <div class="grid-ships">
+      <!-- div que usa la librería gridstack grid-stack-10 se indica que son 10 columnas-->
+      <div id="grid" class="grid-stack grid-stack-10">
+        <!--se agrega un elemento (widget) a la grilla-->
+        <!--data-gs-x y data-gs-y posicion de inicio -->
+        <!-- data-gs-width cuantas columnas ocupa data-gs-height cuantas filas ocupa -->
+        <div id="carrier" class="grid-stack-item"
+             data-gs-x="0" data-gs-y="0"
+             data-gs-width="3" data-gs-height="1">
+          <!--div contenerdor (acá se coloca la imagen de fondo, además se coloca el mouse como una mano, etc..)-->
+          <div class="grid-stack-item-content carrierHorizontal"></div>
+        </div>
+        <div id="patroal" class="grid-stack-item"
+             data-gs-x="4" data-gs-y="0"
+             data-gs-width="2" data-gs-height="1">
+          <div class="grid-stack-item-content patroalHorizontal"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="app">
     <h2>{{msgA}} {{playerA}}  <span v-if="playerA.length > 0 && playerB.length > 0"> vs </span> {{msgB}} {{playerB}}</h2>
 
     <div class="col-xs-5">
-    <table class="tableShipLocation" id="tableShips">
-        <h3>SHIPS LOCATION TABLE</h3>
+        <table class="tableShipLocation" id="tableShips">
+              <h3>SHIPS LOCATION TABLE</h3>
 
-        <div style="text-align: left">
-            <button type="button" id="joinShip" class="btn btn-primary">Join Ships</button>
-        </div>
+              <div style="text-align: left">
+                  <button type="button" id="joinShip" class="btn btn-primary">Join Ships</button>
+              </div>
 
-        <thead>
-            <tr>
-                <th v-for="horizontalCells of horizontal">
-                    {{horizontalCells}}
-                </th>
-            </tr>
-        </thead>
+             <thead>
+                <tr>
+                    <th v-for="horizontalCells of horizontal">
+                        {{horizontalCells}}
+                    </th>
+                </tr>
+            </thead>
 
-        <tbody>
-        <tr v-for="v in vertical">
-            <td>{{v}}</td>
-            <td :id="v+1"></td>
-            <td :id="v+2"></td>
-            <td :id="v+3"></td>
-            <td :id="v+4"></td>
-            <td :id="v+5"></td>
-            <td :id="v+6"></td>
-            <td :id="v+7"></td>
-            <td :id="v+8"></td>
-            <td :id="v+9"></td>
-            <td :id="v+10"></td>
-        </tr>
-        </tbody>
-    </table>
+            <tbody>
+                <tr v-for="v in vertical">
+                  <td>{{v}}</td>
+                  <td :id="v+1"></td>
+                  <td :id="v+2"></td>
+                  <td :id="v+3"></td>
+                  <td :id="v+4"></td>
+                  <td :id="v+5"></td>
+                  <td :id="v+6"></td>
+                  <td :id="v+7"></td>
+                  <td :id="v+8"></td>
+                  <td :id="v+9"></td>
+                  <td :id="v+10"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
    <div class="col-xs-5">
-    <table class="tableSalvoLocation" id="tableSalvo">
+      <table class="tableSalvoLocation" id="tableSalvo">
             <h3>SALVO LOCATION TABLE </h3>
         <thead>
             <tr>
@@ -87,11 +115,20 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- libreria y demás dependencias-->
+    <script  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src="dist/jquery-ui.min.js"></script>
+    <script src="dist/jquery.ui.touch-punch.min.js"></script>
+    <script src="dist/gridstack.js"></script>
+    <script src="dist/gridstack.jQueryUI.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     <script src="scripts/functionFetch.js"></script>
     <script src="scripts/game.js"></script>
-<script src="scripts/loggin.js"></script>
+    <script src="scripts/loggin.js"></script>
+    <script src="scripts/grilla.js"></script>
+
 </body>
 </html>
