@@ -36,7 +36,7 @@
         <div class="col-sm-12">
             <form class="table table-hover text-centered" >
                 <div >
-                    <h2>If you dare ... let's inside into the battle</h2>
+                    <h2>If you dare ... fight !!!</h2>
 
                     <div class="form-group">
                         <label for="writeUserName">Username:</label>
@@ -48,6 +48,19 @@
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox" id="newUserButton" name="new user"> check for a new userName</label>
+                    </div>
+
+                    <div id="playerSide">
+                        <h4> select player side:</h4>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="zombie" name="groupOfDefaultRadios" value="ZOMBIES" >
+                            <label class="custom-control-label" for="zombie"> ZOMBIE</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="plants" name="groupOfDefaultRadios" value="PLANTS" checked >
+                            <label class="custom-control-label" for="plants">PLANTS</label>
+                        </div>
                     </div>
 
                     <button type="button" id="loginButton" class="btn btn-primary"> <i class="fas fa-sign-out-alt"></i>Login </button>
@@ -90,14 +103,14 @@
 
                     <li v-else-if="game.gamePlayers[0].player.id==myPlayerId">
                         <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
-                            GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} is waiting for an zombie
+                            GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} is waiting for you?
                             <!-- <button type="button" id="getGamePlayer">join and fight</button>-->
                         </a>
                     </li>
 
                     <li  v-else-if="game.gamePlayers.length < 2 && game.gamePlayers[0].player.id != myPlayerId ">
 
-                        GAME #{{game.id}} : {{game.gamePlayers[0].player.username}} vs waiting for an zombie
+                        GAME #{{game.id}} : {{game.gamePlayers[0].player.username}} vs waiting for you?
                         <button class="joinGame" type="button" :data-joinGpId="game.id" :id="'joinGame'+game.id" style="display: none">join and fight</button>
                     </li>
                 </ul>

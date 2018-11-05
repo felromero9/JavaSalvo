@@ -100,6 +100,7 @@ $(function () {
             $('#welcome').show();
             $('#newgame').show();
             $('.joinGame').show();
+            $('#playerSide').show();
 
         }
         else{
@@ -110,6 +111,9 @@ $(function () {
             $('#welcome').show();
             $('#newgame').hide();
             $('.joinGame').hide();
+            $('#playerSide').hide();
+
+
 
 
         }

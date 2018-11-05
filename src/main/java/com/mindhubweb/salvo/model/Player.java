@@ -1,5 +1,6 @@
 package com.mindhubweb.salvo.model;
 
+import javafx.geometry.Side;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.HashMap;
@@ -32,14 +33,25 @@ public class Player {
 
     private String userName;
     private String password;
+    private PlayerSide playerSide;
+
 
     public Player() {
     }
 
-    public Player(String userName, String password) {// estos son los constructores, no olvidar los parametros
+    public Player(String userName, String password, PlayerSide playerSide) {// estos son los constructores, no olvidar los parametros
         this.userName = userName;
         this.password = password;
+        this.playerSide = playerSide;
 
+    }
+
+    public PlayerSide getPlayerSide(){
+        return playerSide;
+    }
+
+    public void setPlayerSide(PlayerSide playerSide){
+        this.playerSide = playerSide;
     }
 
     public Set<Score> getScores() {
@@ -71,6 +83,7 @@ public class Player {
         Map<String, Object> dto = new HashMap<>();
         dto.put("id", this.getId());
         dto.put("username", this.getUserName());
+        dto.put("playerSide", this.getPlayerSide());
         return dto;
     }
 

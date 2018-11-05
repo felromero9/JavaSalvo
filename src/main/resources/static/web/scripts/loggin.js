@@ -2,23 +2,38 @@ jQuery(document).ready(function($) {
     $("#newUserButton").change(function(){
         $("#loginButton").toggle();
         $("#signupButton").toggle();
+        $("#playerSide").toggle();
+
+
+
     });
 
 //SIGN UP------------------------------------------------------------------
     $("#signupButton").click(function(){
+
         var newUserName = $("#writeUserName").val();
         var newUserPassword = $("#writePassword").val();
-        if (newUserName && newUserPassword) {
-            postPlayer(newUserName, newUserPassword);
+        var newPlayerSide = $("#playerSide").find("input[type='radio']:checked").val();
+
+        if (newUserName && newUserPassword && newPlayerSide) {
+            postPlayer(newUserName, newUserPassword, newPlayerSide);
         }
         else {
             console.log("please enter a username and password")
             alertify.error(' please enter a username and password ');
         }
+        console.log(radioVal);
     });
 
-    function postPlayer(newUserName, newUserPassword) {
-        $.post( "/api/players",{ userName: newUserName, password: newUserPassword })
+   /* $('input').on('change', function() {
+       console.log($('input:checked')).val();
+    });*/
+
+
+
+
+    function postPlayer(newUserName, newUserPassword, newPlayerSide) {
+        $.post( "/api/players",{ userName: newUserName, password: newUserPassword, playerSide: newPlayerSide})
             .done(function( ) {
                 loginData();
                 console.log( "Saved -- reloading");

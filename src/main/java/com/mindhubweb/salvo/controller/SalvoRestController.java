@@ -4,6 +4,7 @@ import com.mindhubweb.salvo.model.*;
 import com.mindhubweb.salvo.repository.GamePlayerRepository;
 import com.mindhubweb.salvo.repository.GameRepository;
 import com.mindhubweb.salvo.repository.PlayerRepository;
+import javafx.geometry.Side;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,7 +70,7 @@ public class SalvoRestController {
 
 
   @PostMapping(path = "/players")
-  public ResponseEntity<Map<String, Object>> createUser(@RequestParam String userName,@RequestParam String password) {
+  public ResponseEntity<Map<String, Object>> createUser(@RequestParam String userName,@RequestParam String password,@RequestParam PlayerSide playerSide) {
     if (userName.isEmpty() || password.isEmpty()) {
       return new ResponseEntity<>(makeMap("error", "No name or password"), HttpStatus.FORBIDDEN);
     }
@@ -77,7 +78,7 @@ public class SalvoRestController {
     if (player != null) {
       return new ResponseEntity<>(makeMap("error", "userName in use, please try again!"), HttpStatus.CONFLICT);
     }
-    Player newPlayer = playerRepository.save(new Player(userName, passwordEncoder.encode(password)));
+    Player newPlayer = playerRepository.save(new Player(userName, passwordEncoder.encode(password),playerSide));
     return new ResponseEntity<>(makeMap("id", newPlayer.getId()), HttpStatus.CREATED);
   }
 
