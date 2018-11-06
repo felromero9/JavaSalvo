@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>GAME</title>
-      <link rel="stylesheet" href="dist/normalize.css" />
+    <link rel="stylesheet" href="dist/normalize.css" />
     <link rel="stylesheet" href="dist/gridstack.css" />
     <link rel="stylesheet" href="dist/gridstack-extra.css" />
     <link rel="stylesheet" href="dist/style.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/table.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
 
 <body>
     <div class="title">
@@ -23,32 +22,19 @@
 
     </div>
 
-    <!-- div solo para colocar el borde y posicionar en base a la altura y anchura-->
+      <!-- div solo para colocar el borde y posicionar en base a la altura y anchura-->
     <div class="grid-ships">
       <!-- div que usa la librería gridstack grid-stack-10 se indica que son 10 columnas-->
       <div id="grid" class="grid-stack grid-stack-10">
-        <!--se agrega un elemento (widget) a la grilla-->
-        <!--data-gs-x y data-gs-y posicion de inicio -->
-        <!-- data-gs-width cuantas columnas ocupa data-gs-height cuantas filas ocupa -->
-        <div id="carrier" class="grid-stack-item"
-             data-gs-x="0" data-gs-y="0"
-             data-gs-width="3" data-gs-height="1">
-          <!--div contenerdor (acá se coloca la imagen de fondo, además se coloca el mouse como una mano, etc..)-->
-          <div class="grid-stack-item-content carrierHorizontal"></div>
-        </div>
-        <div id="patroal" class="grid-stack-item"
-             data-gs-x="4" data-gs-y="0"
-             data-gs-width="2" data-gs-height="1">
-          <div class="grid-stack-item-content patroalHorizontal"></div>
-        </div>
       </div>
+    </div>
     </div>
 
 
 
     <div id="app">
     <h2>{{msgA}} {{playerA}}  <span v-if="playerA.length > 0 && playerB.length > 0"> vs </span> {{msgB}} {{playerB}}</h2>
-
+    <h2>TEAM: {{side}}</h2>
     <div class="col-xs-5">
         <table class="tableShipLocation" id="tableShips">
               <h3>SHIPS LOCATION TABLE</h3>
@@ -132,3 +118,20 @@
 
 </body>
 </html>
+
+
+
+
+<!--se agrega un elemento (widget) a la grilla-->
+<!--data-gs-x y data-gs-y posicion de inicio -->
+<!-- data-gs-width cuantas columnas ocupa data-gs-height cuantas filas ocupa -->
+<!-- <div id="carrier" class="grid-stack-item"
+      data-gs-x="0" data-gs-y="0"
+      data-gs-width="3" data-gs-height="1">-->
+<!--div contenerdor (acá se coloca la imagen de fondo, además se coloca el mouse como una mano, etc..)-->
+<!--<div class="grid-stack-item-content carrierHorizontal"></div>
+</div>
+<div id="patroal" class="grid-stack-item"
+   data-gs-x="4" data-gs-y="0"
+   data-gs-width="2" data-gs-height="1">
+<div class="grid-stack-item-content patroalHorizontal"></div>-->

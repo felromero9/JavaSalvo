@@ -19,26 +19,26 @@ $(function () {
 //llamado del fetch
 
         fetchJson("http://localhost:8080/api/games", {
-            method: 'GET',
+                       method: 'GET',
 
-        })
-            .then(function (json) {
-               console.log("well done my friend!");
-               app.games=json.games;
-               processPoints(json);
-               app.playerWelcome = json.user.userName;
-               app.myPlayerId = json.user.id;
-               app.gamePlayerId = json.games.id;
-               app.user = json.user
-               console.log("y que onda"+json.user!=="Guest")
+                   })
+                       .then(function (json) {
+                          console.log("well done my friend!");
+                          app.games=json.games;
+                          processPoints(json);
+                          app.playerWelcome = json.user.userName;
+                          app.myPlayerId = json.user.id;
+                          app.gamePlayerId = json.games.id;
+                          app.user = json.user
+                          console.log("y que onda"+json.user!=="Guest")
 
 
-            }).then(function(){
-                checkIfGuest();
+                       }).then(function(){
+                           checkIfGuest();
 
-            }).catch(function (error) {
-            console.log("FATAL error!");
-        });
+                       }).catch(function (error) {
+                       console.log("FATAL error!");
+                   });
 // finaliza llamado del fetch
 
 

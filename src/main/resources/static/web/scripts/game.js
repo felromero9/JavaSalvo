@@ -9,16 +9,6 @@ function takeNumberURL(url) {
     return n;
 }
 
-/*function fetchJson(url, init) {
-    return fetch(url, init).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error(response.statusText);
-    });
-}*/
-
-
 $(function () {
     app = new Vue({
         el: '#app',
@@ -34,7 +24,8 @@ $(function () {
             myGpId:"",
             opponentGpId:"",
             myId:"",
-            opponentId:""
+            opponentId:"",
+            side:""
         }
     });
     fetchJson("http://localhost:8080/api/game_view/"+ numberVariable, {
@@ -134,6 +125,8 @@ function postLoginPlayerOut(userName, userPassword) {
             console.log("error" + textStatus);
         });
 }
+
+
 
 /*jQuery(document).ready(function($) {
     $("#logoutButton").click(function () {

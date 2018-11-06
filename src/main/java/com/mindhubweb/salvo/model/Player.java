@@ -75,6 +75,7 @@ public class Player {
         dto.put("id", this.getId());
         //dto.put("id", playerRepository.findById(this.getId()));
         dto.put("userName", this.getUserName());
+        dto.put("side", this.playerSide);
 
         return dto;
     }
