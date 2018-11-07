@@ -72,7 +72,7 @@ public class Ship {
 
     public Map<String, Object> shipsDto(){
         Map<String, Object> dto = new HashMap<>();
-        dto.put("ships",this.type);
+        dto.put("type",this.type);
         dto.put("cells",this.cells);
         return dto;
     }

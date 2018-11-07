@@ -54,9 +54,12 @@ public class SalvoApplication {
 
 			// comienza los sets de SHIPS
 			Set<Ship> shipSet1 = new HashSet<>();
-			shipSet1.add(new Ship(ShipType.MELONPULTA,new ArrayList<>(Arrays.asList("H2","H3","H4"))));
-			shipSet1.add(new Ship(ShipType.HIELAGUISANTES,new ArrayList<>(Arrays.asList("E1","F1","G1"))));
-			shipSet1.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("B4","B5"))));
+			shipSet1.add(new Ship(ShipType.MELONPULTA,new ArrayList<>(Arrays.asList("H2","H3","H4","H5"))));
+			shipSet1.add(new Ship(ShipType.HIELAGUISANTES,new ArrayList<>(Arrays.asList("E1","E2","E3"))));
+			shipSet1.add(new Ship(ShipType.LANZAMAIZ,new ArrayList<>(Arrays.asList("B4","B5","B6"))));
+			shipSet1.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("H1","J2"))));
+			shipSet1.add(new Ship(ShipType.CARRONIVERA,new ArrayList<>(Arrays.asList("C2","C3","C4","C5","C6"))));
+
 			Set<Ship> shipSet2 = new HashSet<>();
 			shipSet2.add(new Ship(ShipType.ZOMBIE_BAILARIN,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
 			shipSet2.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("F1","F2"))));
@@ -67,16 +70,16 @@ public class SalvoApplication {
 			shipSet4.add(new Ship(ShipType.HIELAGUISANTES,new ArrayList<>(Arrays.asList("A2","A3","A4"))));
 			shipSet4.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("G6","H6"))));
 			Set<Ship> shipSet5 = new HashSet<>();
-			shipSet5.add(new Ship(ShipType.MELONPULTA,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
+			shipSet5.add(new Ship(ShipType.MELONPULTA,new ArrayList<>(Arrays.asList("B5","C5","D5","E5"))));
 			shipSet5.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("C6","C7"))));
 			Set<Ship> shipSet6 = new HashSet<>();
 			shipSet6.add(new Ship(ShipType.HIELAGUISANTES,new ArrayList<>(Arrays.asList("A2","A3","A4"))));
-			shipSet6.add(new Ship(ShipType.ZOMBISTEIN,new ArrayList<>(Arrays.asList("G6","H6"))));
+			shipSet6.add(new Ship(ShipType.ZOMBIE_BAILARIN,new ArrayList<>(Arrays.asList("G6","H6"))));
 			Set<Ship> shipSet7 = new HashSet<>();
 			shipSet7.add(new Ship(ShipType.MELONPULTA,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
 			shipSet7.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("C6","C7"))));
 			Set<Ship> shipSet8 = new HashSet<>();
-			shipSet8.add(new Ship(ShipType.ZOMBISTEIN,new ArrayList<>(Arrays.asList("A2","A3","A4"))));
+			shipSet8.add(new Ship(ShipType.ZOMBISTEIN,new ArrayList<>(Arrays.asList("A2","A3","A4","A5","A6"))));
 			shipSet8.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("G6","H6"))));
 
 			//aca comienza los sets de SALVO
