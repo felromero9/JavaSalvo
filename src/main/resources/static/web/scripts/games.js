@@ -12,7 +12,8 @@ $(function () {
                 playerWelcome:"",
                 myPlayerId:"",
                 user:"",
-                gamePlayerId:""
+                gamePlayerId:"",
+                side:""
 
             }
         });
@@ -29,7 +30,8 @@ $(function () {
                           app.playerWelcome = json.user.userName;
                           app.myPlayerId = json.user.id;
                           app.gamePlayerId = json.games.id;
-                          app.user = json.user
+                          app.user = json.user;
+                          app.side = json.user.side;
                           console.log("y que onda"+json.user!=="Guest")
 
 

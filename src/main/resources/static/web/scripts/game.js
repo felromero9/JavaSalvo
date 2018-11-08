@@ -25,9 +25,23 @@ $(function () {
             opponentGpId:"",
             myId:"",
             opponentId:"",
-            side:""
+            side:"",
+            YOU:""
         }
     });
+
+    fetchJson("http://localhost:8080/api/games",{
+                    method: 'GET',
+                })
+                .then(function(json){
+                //app.playerA = json.gamePlayer[0].player.username;
+              //  app.playerB = json.gamePlayer[1].player.username;
+                app.side =json.user.side;
+                app.YOU = json.user.userName;
+                }).catch(function(error){
+                console.log("error fatal");
+                });
+
     fetchJson("http://localhost:8080/api/game_view/"+ numberVariable, {
         method: 'GET',
 
@@ -38,19 +52,21 @@ $(function () {
             getmsg(json);
             app.ships = json.ships;
             app.salvoes = json.salvoes;
-            app.playerA = json.gamePlayer[0].player.username;
-            app.playerB = json.gamePlayer[1].player.username;
-            getIds(json);
+
+            //getIds(json);
             paintPosition(app.ships);
             paintPositionSalvoes(json, app.salvoes);
+            shipSide();
+            //playerSide();
+
 
 
         }).catch(function (error) {
-        console.log("FATAL error!");
-    });
+        console.log(error);
+        });
+//////////////////
 
-
-    function getIds(json){
+     function getIds(json){
         if (json.gamePlayer[0].id==numberVariable){
             app.myGpId=json.gamePlayer[0].id;
             app.myId=json.gamePlayer[0].player.id;
