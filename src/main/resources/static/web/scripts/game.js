@@ -53,7 +53,7 @@ $(function () {
             app.ships = json.ships;
             app.salvoes = json.salvoes;
 
-            //getIds(json);
+           getIds(json);
             paintPosition(app.ships);
             paintPositionSalvoes(json, app.salvoes);
             shipSide();
@@ -67,7 +67,23 @@ $(function () {
 //////////////////
 
      function getIds(json){
+
+        json.gamePlayer.forEach(function(gamePlay){
+        if(gamePlay.id == numberVariable){
+            app.myGpId = gamePlay.id;
+            app.myIo = gamePlay.player.id;
+
+        }
+            else{
+            app.opponentGpId = gamePlay.id;
+            app.opponentId = gamePlay.player.id;
+
+            }
+        })
+     }
+        /*
         if (json.gamePlayer[0].id==numberVariable){
+
             app.myGpId=json.gamePlayer[0].id;
             app.myId=json.gamePlayer[0].player.id;
             app.opponentGpId=json.gamePlayer[1].id;
@@ -78,8 +94,8 @@ $(function () {
             app.myId=json.gamePlayer[1].player.id;
             app.opponentGpId=json.gamePlayer[0].id
             app.opponentId=json.gamePlayer[0].player.id;
-        }
-    }
+        }*/
+
 
 
 

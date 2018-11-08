@@ -116,6 +116,82 @@ function plantsGridNew(){
 function zombiesGridNew(){
 }
 
+// ADDING BUTTOM TO SEND SHIP LOCATION TO BACKEND :)
+
+function reverseMapsShips(){
+var newShips=[];
+
+
+$(".grid-stack-item").each(function(){
+    var array = []
+    var y = parseInt($(this).attr("data-gs-y"));
+    var x = parseInt($(this).attr("data-gs-x"))+1;
+    var width = parseInt($(this).attr("data-gs-width"));
+    var height = parseInt($(this).attr("data-gs-height"));
+
+    var newObject = new Object
+
+    newObject.type = $(this).attr("id")
+
+
+    if(width>height){
+        for(var i=0; i<width; i++ ){
+        array.push(getLetter(y)+(x+i).toString());
+        }
+   }else{
+        for (var i=0; i<height; i++){
+        array.push(getLetter(y+i)+x)
+        }
+    }
+
+    newObject.locations = array
+    newShips.push(newObject);
+
+})
+console.log(newShips);
+return newShips;
+
+
+}
+
+// CONVERT LETTER FOR LETTER IN NUMBER
+function getLetter(y){
+    switch (y) {
+        case 0:
+            return "A";
+            break;
+        case 1:
+            return "B";
+            break;
+        case 2:
+            return "C";
+            break;
+        case 3:
+            return "D";
+            break;
+        case 4:
+            return "E";
+             break;
+        case 5:
+            return "F";
+             break;
+        case 6:
+            return "G";
+             break;
+        case 7:
+            return "H";
+             break;
+        case 8:
+            return "I";
+            break;
+        case 9:
+            return "J";
+            break;
+    default:
+        console.log("default");
+    }
+}
+
 // CONVERT LETTER FOR NUMBER IN CELLS
 function getNumber(y){
     switch (y) {
@@ -193,126 +269,3 @@ function mapShips(){
 
 
 
-
-
-/*
-//agregando un elmento(widget) desde el javascript
-        grid.addWidget($('<div id="LANZAGUISANTES"><div class="grid-stack-item-content lanzaguisantes"></div><div/>'),
-            1, 8, 2, 1);
-        grid.addWidget($('<div id="LANZAMAIZ"><div class="grid-stack-item-content lanzamaiz"></div><div/>'),
-            1, 5, 3, 1);
-        grid.addWidget($('<div id="HIELAGUIZANTES"><div class="grid-stack-item-content hielaguisantes"></div><div/>'),
-            2, 4, 3, 1);
-        grid.addWidget($('<div id="MELONPULTA"><div class="grid-stack-item-content melonpulta"></div><div/>'),
-            0, 5, 4, 1);
-        grid.addWidget($('<div id="CARRONIVERA"><div class="grid-stack-item-content carronivora"></div><div/>'),
-            4, 5, 5, 1);
-             console.log(grid.isAreaEmpty(1, 8, 3, 1));
-            //está libre, true
-            console.log(grid.isAreaEmpty(1, 7, 3, 1));
-
-        $("#CARRONIVERA").click(function(){
-            if($(this).children().hasClass("carronivora")){
-                grid.resize($(this),1,5);
-                $(this).children().removeClass("carronivora");
-                $(this).children().addClass("carrierHorizontalRed");
-            }else{
-                grid.resize($(this),5,1);
-                $(this).children().addClass("carronivora");
-                $(this).children().removeClass("carrierHorizontalRed");
-            }
-        });
-        $("#LANZAMAIZ,#HIELAGUIZANTES").click(function(){
-            if($(this).children().hasClass("lanzamaiz,hielaguisantes")){
-                grid.resize($(this),1,3);
-                $(this).children().removeClass("lanzamaiz,hielaguisantes");
-                $(this).children().addClass("carrierHorizontalRed");
-            }else{
-                grid.resize($(this),3,1);
-                $(this).children().addClass("lanzamaiz,hielaguisantes");
-                $(this).children().removeClass("carrierHorizontalRed");
-            }
-        });
-        $("#MELONPULTA").click(function(){
-            if($(this).children().hasClass("melonpulta")){
-                grid.resize($(this),1,4);
-                $(this).children().removeClass("melonpulta");
-                $(this).children().addClass("carrierHorizontalRed");
-            }else{
-                grid.resize($(this),4,1);
-                $(this).children().addClass("melonpulta");
-                $(this).children().removeClass("carrierHorizontalRed");
-            }
-        });
-        $("#LANZAGUISANTES").click(function(){
-                    if($(this).children().hasClass("lanzaguisantes")){
-                        grid.resize($(this),1,2);
-                        $(this).children().removeClass("lanzaguisantes");
-                        $(this).children().addClass("patroalHorizontalRed");
-                    }else{
-                        grid.resize($(this),2,1);
-                        $(this).children().addClass("lanzaguisantes");
-                        $(this).children().removeClass("patroalHorizontalRed");
-                    }
-                });
-
-            //agregando un elmento(widget) desde el javascript
-                      grid.addWidget($('<div id="ZOMBIE_COMUN"><div class="grid-stack-item-content lanzaguisantes"></div><div/>'),
-                         1, 8, 2, 1);
-                      grid.addWidget($('<div id="ZOMBIE_LECTOR"><div class="grid-stack-item-content lanzamaiz"></div><div/>'),
-                         1, 5, 3, 1);
-                      grid.addWidget($('<div id="ZOMBIE_BAILARIN"><div class="grid-stack-item-content hielaguisantes"></div><div/>'),
-                         2, 4, 3, 1);
-                      grid.addWidget($('<div id="ZOMBIE_PLAYERO"><div class="grid-stack-item-content melonpulta"></div><div/>'),
-                         0, 5, 4, 1);
-                      grid.addWidget($('<div id="ZOMBISTEIN"><div class="grid-stack-item-content carronivora"></div><div/>'),
-                            4, 5, 5, 1);
-
-                        console.log(grid.isAreaEmpty(1, 8, 3, 1));
-                        //está libre, true
-                        console.log(grid.isAreaEmpty(1, 7, 3, 1));
-                         $("#ZOMBISTEIN").click(function(){
-                                    if($(this).children().hasClass("carronivora")){
-                                        grid.resize($(this),1,5);
-                                        $(this).children().removeClass("carronivora");
-                                        $(this).children().addClass("carrierHorizontalRed");
-                                    }else{
-                                        grid.resize($(this),5,1);
-                                        $(this).children().addClass("carronivora");
-                                        $(this).children().removeClass("carrierHorizontalRed");
-                                    }
-                                });
-                                $("#ZOMBIE_BAILARIN,#ZOMBIE_LECTOR").click(function(){
-                                    if($(this).children().hasClass("lanzamaiz,hielaguisantes")){
-                                        grid.resize($(this),1,3);
-                                        $(this).children().removeClass("lanzamaiz,hielaguisantes");
-                                        $(this).children().addClass("carrierHorizontalRed");
-                                    }else{
-                                        grid.resize($(this),3,1);
-                                        $(this).children().addClass("lanzamaiz,hielaguisantes");
-                                        $(this).children().removeClass("carrierHorizontalRed");
-                                    }
-                                });
-                                $("#ZOMBIE_PLAYERO").click(function(){
-                                        if($(this).children().hasClass("melonpulta")){
-                                            grid.resize($(this),1,4);
-                                            $(this).children().removeClass("melonpulta");
-                                            $(this).children().addClass("carrierHorizontalRed");
-                                        }else{
-                                            grid.resize($(this),4,1);
-                                            $(this).children().addClass("melonpulta");
-                                            $(this).children().removeClass("carrierHorizontalRed");
-                                        }
-                                    });
-                                $("#ZOMBIE_COMUN").click(function(){
-                                if($(this).children().hasClass("lanzaguisantes")){
-                                    grid.resize($(this),1,2);
-                                    $(this).children().removeClass("lanzaguisantes");
-                                    $(this).children().addClass("patroalHorizontalRed");
-                                }else{
-                                    grid.resize($(this),2,1);
-                                    $(this).children().addClass("lanzaguisantes");
-                                    $(this).children().removeClass("patroalHorizontalRed");
-                                }
-                            });
-*/

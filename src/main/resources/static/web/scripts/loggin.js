@@ -30,8 +30,6 @@ jQuery(document).ready(function($) {
     });*/
 
 
-
-
     function postPlayer(newUserName, newUserPassword, newPlayerSide) {
         $.post( "/api/players",{ userName: newUserName, password: newUserPassword, playerSide: newPlayerSide})
             .done(function( ) {
@@ -174,13 +172,14 @@ jQuery(document).ready(function($) {
                     { "type": "DESTROYER", "locations": ["A5", "B1", "C5"]}
                     ];
 
-    $('#joinShip').click(function(){
-            joinShips(app.myGpId);
+    $('#sendShips').click(function(){
+           // sendShipsToBackEnd(app.myGpId);
             console.log("it works");
+            reverseMapsShips();
            // var gamePlayerId = myGpId
         })
 
-        function joinShips (myGpId){
+        function sendShipsToBackEnd (myGpId){
             $.post({
                 url:"/api/games/players/"+myGpId+"/ships",
                 data: JSON.stringify(newShips),
