@@ -2,7 +2,6 @@ package com.mindhubweb.salvo;
 
 import com.mindhubweb.salvo.model.*;
 import com.mindhubweb.salvo.repository.*;
-import javafx.geometry.Side;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -61,10 +60,10 @@ public class SalvoApplication {
 			shipSet1.add(new Ship(ShipType.CARRONIVERA,new ArrayList<>(Arrays.asList("C2","C3","C4","C5","C6"))));
 
 			Set<Ship> shipSet2 = new HashSet<>();
-			shipSet2.add(new Ship(ShipType.ZOMBIE_BAILARIN,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
+			shipSet2.add(new Ship(ShipType.ZOMBIEBAILARIN,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
 			shipSet2.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("F1","F2"))));
 			Set<Ship> shipSet3 = new HashSet<>();
-			shipSet3.add(new Ship(ShipType.ZOMBIE_BAILARIN,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
+			shipSet3.add(new Ship(ShipType.ZOMBIEBAILARIN,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
 			shipSet3.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("C6","C7"))));
 			Set<Ship> shipSet4 = new HashSet<>();
 			shipSet4.add(new Ship(ShipType.HIELAGUISANTES,new ArrayList<>(Arrays.asList("A2","A3","A4"))));
@@ -74,7 +73,7 @@ public class SalvoApplication {
 			shipSet5.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("C6","C7"))));
 			Set<Ship> shipSet6 = new HashSet<>();
 			shipSet6.add(new Ship(ShipType.HIELAGUISANTES,new ArrayList<>(Arrays.asList("A2","A3","A4"))));
-			shipSet6.add(new Ship(ShipType.ZOMBIE_BAILARIN,new ArrayList<>(Arrays.asList("G6","H6"))));
+			shipSet6.add(new Ship(ShipType.ZOMBIEBAILARIN,new ArrayList<>(Arrays.asList("G6","H6"))));
 			Set<Ship> shipSet7 = new HashSet<>();
 			shipSet7.add(new Ship(ShipType.MELONPULTA,new ArrayList<>(Arrays.asList("B5","C5","D5"))));
 			shipSet7.add(new Ship(ShipType.LANZAGUISANTES,new ArrayList<>(Arrays.asList("C6","C7"))));

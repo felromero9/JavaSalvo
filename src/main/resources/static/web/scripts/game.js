@@ -59,8 +59,6 @@ $(function () {
             shipSide();
             //playerSide();
 
-
-
         }).catch(function (error) {
         console.log(error);
         });
@@ -81,23 +79,6 @@ $(function () {
             }
         })
      }
-        /*
-        if (json.gamePlayer[0].id==numberVariable){
-
-            app.myGpId=json.gamePlayer[0].id;
-            app.myId=json.gamePlayer[0].player.id;
-            app.opponentGpId=json.gamePlayer[1].id;
-            app.opponentId=json.gamePlayer[1].player.id;
-        }
-        else {
-            app.myGpId=json.gamePlayer[1].id;
-            app.myId=json.gamePlayer[1].player.id;
-            app.opponentGpId=json.gamePlayer[0].id
-            app.opponentId=json.gamePlayer[0].player.id;
-        }*/
-
-
-
 
     function paintPosition(ships) {
         ships.forEach(function (ship) {
@@ -159,48 +140,3 @@ function postLoginPlayerOut(userName, userPassword) {
 }
 
 
-
-/*jQuery(document).ready(function($) {
-    $("#logoutButton").click(function () {
-        postLoginPlayerOut();
-    });
-},
-
-function postLoginPlayerOut(userName, userPassword) {
-    $.post( "/api/logout",{ username: userName, password: userPassword })
-        .done(function( ) {
-            console.log( "You are logged out.");
-            location.reload();
-
-
-        })
-        .fail(function( jqXHR, textStatus ) {
-            console.log( "error" + textStatus );
-        });
-},*/
-
-
-
-
-/*function paintPositionSalvo(salvoes) {
-       salvoes.forEach(function (salvo) {
-           salvo.cells.forEach(function (cell) {
-               $('#' + cell+'s').addClass("my-salvo");
-           })
-       });
-   }*/
-/*function addAllLocation(json) {
-    var shipCells = [];
-    for (i = 0; i < json.ships.length; i++) {
-        shipCells.push(json.ships[i].cells)
-    }
-    return shipCells;
-}*/
-
-/*function paintPosition(ships) {
-    for (var j = 0; j < ships.length; j++) {
-        for (var i = 0; i < ships[j].cells.length; i++)
-
-            $('#' + ships[j].cells[i]).addClass("my-ship");
-    }
-}*/

@@ -5,48 +5,6 @@
     cursor: -moz-grab;
 }
 
-.lanzamaiz{
-    background-image: url('lanzamaiz.jpg');
-    background-size: cover;
-}
-
-.lanzaguisantes{
-    background-image: url('lanzaguisantes.jpg');
-    background-size: cover;
-}
-
-.hielaguisantes{
-    background-image: url('hielaguisantes.jpg');
-    background-size: cover;
-}
-
-.melonpulta{
-  background-image: url('melonpulta.png');
-  background-size: cover;
-  }
- .carronivera{
-   background-image: url('carronivora.png');
-   background-size: cover;
-   }
-
-.carrierHorizontalRed{
-    background-image: url('submarinehor_red.png');
-    background-size: 100% 100%;
-    //width: 45px !important;
-
-
-}
-
-
-
-.patroalHorizontalRed{
-    background-image: url('lanzaguisantesVertical.jpg');
-    background-size: 100% 100%;
-    //width: 45px !important;
-
-}
-
-
 .grid-ships{
     border: solid black;
     background-image: url('image.png');
@@ -58,3 +16,54 @@
 
     }
 
+.lanzamaiz{
+    background-image: url('lanzamaiz.jpg');
+    background-size: cover;
+}
+.lanzaguisantes{
+    background-image: url('lanzaguisantes.jpg');
+    background-size: cover;
+}
+.hielaguisantes{
+    background-image: url('hielaguisantes.jpg');
+    background-size: cover;
+}
+.melonpulta{
+  background-image: url('melonpulta.png');
+  background-size: cover;
+  }
+.carronivera{
+   background-image: url('carronivora.png');
+   background-size: cover;
+   }
+.carrierHorizontalRed{
+    background-image: url('submarinehor_red.png');
+    background-size: 100% 100%;
+    //width: 45px !important;
+}
+.patroalHorizontalRed{
+    background-image: url('lanzaguisantesVertical.jpg');
+    background-size: 100% 100%;
+    //width: 45px !important;
+}
+
+.zombiecomun{
+    background-image: url('zombiecomun.jpg');
+    background-size: cover;
+}
+.zombielector{
+    background-image: url('zombielector.png');
+    background-size: cover;
+}
+.zombiebailarin{
+     background-image: url('zombiebailarin.jpg');
+     background-size: cover;
+}
+.zombieplayero{
+    background-image: url('zombieplayero.jpg');
+    background-size: cover;
+}
+.zombistein{
+    background-image: url('zombistein.jpg');
+    background-size: cover;
+}

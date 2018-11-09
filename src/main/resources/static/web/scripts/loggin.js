@@ -165,24 +165,18 @@ jQuery(document).ready(function($) {
 
 
     // JOIN SHIPS
-    var newShips = [{ "type": "DESTROYER", "locations": ["A1", "B1", "C1"] },
-                    { "type": "PATROLBOAT", "locations": ["H5", "H6"] },
-                    { "type": "DESTROYER", "locations": ["A2", "B2", "C2"]},
-                    { "type": "DESTROYER", "locations": ["A3", "B3", "C3"]},
-                    { "type": "DESTROYER", "locations": ["A5", "B1", "C5"]}
-                    ];
+      $('#sendShips').click(function(){
 
-    $('#sendShips').click(function(){
-           // sendShipsToBackEnd(app.myGpId);
             console.log("it works");
             reverseMapsShips();
-           // var gamePlayerId = myGpId
+            sendShipsToBackEnd(app.myGpId);
+            location.reload();
         })
 
         function sendShipsToBackEnd (myGpId){
             $.post({
                 url:"/api/games/players/"+myGpId+"/ships",
-                data: JSON.stringify(newShips),
+                data: JSON.stringify(reverseMapsShips()),
                 dataType: "text",
                 contentType: "application/json"
 
