@@ -83,29 +83,29 @@ public class SalvoApplication {
 
 			//aca comienza los sets de SALVO
 			Set<Salvo> salvoSet1 = new HashSet<>();
-			salvoSet1.add(new Salvo("1", new ArrayList<>(Arrays.asList("B5", "C5", "F1"))));
-			salvoSet1.add(new Salvo("2",new ArrayList<>(Arrays.asList("F2","D5"))));
+			salvoSet1.add(new Salvo(1, new ArrayList<>(Arrays.asList("B5", "C5", "F1"))));
+			salvoSet1.add(new Salvo(2,new ArrayList<>(Arrays.asList("F2","D5"))));
 			Set<Salvo> salvoSet2 = new HashSet<>();
-			salvoSet2.add(new Salvo("1",new ArrayList<>(Arrays.asList("B4","B5","B6"))));
-			salvoSet2.add(new Salvo("2",new ArrayList<>(Arrays.asList("E1","H3","A2"))));
+			salvoSet2.add(new Salvo(1,new ArrayList<>(Arrays.asList("B4","B5","B6"))));
+			salvoSet2.add(new Salvo(2,new ArrayList<>(Arrays.asList("E1","H3","A2"))));
 			Set<Salvo> salvoSet3 = new HashSet<>();
-			salvoSet3.add(new Salvo("1",new ArrayList<>(Arrays.asList("A2","A4","G6"))));
-			salvoSet3.add(new Salvo("2",new ArrayList<>(Arrays.asList("A3","H6"))));
+			salvoSet3.add(new Salvo(1,new ArrayList<>(Arrays.asList("A2","A4","G6"))));
+			salvoSet3.add(new Salvo(2,new ArrayList<>(Arrays.asList("A3","H6"))));
 			Set<Salvo> salvoSet4 = new HashSet<>();
-			salvoSet4.add(new Salvo("1",new ArrayList<>(Arrays.asList("B5","D5","C7"))));
-			salvoSet4.add(new Salvo("2",new ArrayList<>(Arrays.asList("A3","H6"))));
+			salvoSet4.add(new Salvo(1,new ArrayList<>(Arrays.asList("B5","D5","C7"))));
+			salvoSet4.add(new Salvo(2,new ArrayList<>(Arrays.asList("A3","H6"))));
 			Set<Salvo> salvoSet5 = new HashSet<>();
-			salvoSet5.add(new Salvo("1",new ArrayList<>(Arrays.asList("G6","H6","A4"))));
-			salvoSet5.add(new Salvo("2",new ArrayList<>(Arrays.asList("A2","A3","D8"))));
+			salvoSet5.add(new Salvo(1,new ArrayList<>(Arrays.asList("G6","H6","A4"))));
+			salvoSet5.add(new Salvo(2,new ArrayList<>(Arrays.asList("A2","A3","D8"))));
 			Set<Salvo> salvoSet6 = new HashSet<>();
-			salvoSet6.add(new Salvo("1",new ArrayList<>(Arrays.asList("H1","H2","H3"))));
-			salvoSet6.add(new Salvo("2",new ArrayList<>(Arrays.asList("E1","F2","G3"))));
+			salvoSet6.add(new Salvo(1,new ArrayList<>(Arrays.asList("H1","H2","H3"))));
+			salvoSet6.add(new Salvo(2,new ArrayList<>(Arrays.asList("E1","F2","G3"))));
 			Set<Salvo> salvoSet7 = new HashSet<>();
-			salvoSet7.add(new Salvo("1",new ArrayList<>(Arrays.asList("A3","A4","F7"))));
-			salvoSet7.add(new Salvo("2",new ArrayList<>(Arrays.asList("A2","G5","H6"))));
+			salvoSet7.add(new Salvo(1,new ArrayList<>(Arrays.asList("A3","A4","F7"))));
+			salvoSet7.add(new Salvo(2,new ArrayList<>(Arrays.asList("A2","G5","H6"))));
 			Set<Salvo> salvoSet8 = new HashSet<>();
-			salvoSet8.add(new Salvo("1",new ArrayList<>(Arrays.asList("B5","C6","H1"))));
-			salvoSet8.add(new Salvo("2",new ArrayList<>(Arrays.asList("C5","C7","D5"))));
+			salvoSet8.add(new Salvo(1,new ArrayList<>(Arrays.asList("B5","C6","H1"))));
+			salvoSet8.add(new Salvo(2,new ArrayList<>(Arrays.asList("C5","C7","D5"))));
 
 
 			gamePlayerRepository.save(new GamePlayer(player1,game1,LocalDateTime.now(),shipSet1,salvoSet1));

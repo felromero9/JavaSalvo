@@ -21,7 +21,7 @@ public class Salvo {
     // end relationships
 
 
-    private String turn;
+    private int turn;
 
     @ElementCollection
     @Column(name="cell")
@@ -29,7 +29,7 @@ public class Salvo {
 
     public Salvo(){}
 
-    public Salvo(String turn, List<String> cells ){// estoo es el constructor
+    public Salvo(int turn, List<String> cells ){// estoo es el constructor
         this.turn =turn;
         this.cells=cells;
     }
@@ -59,11 +59,11 @@ public class Salvo {
         this.cells = cells;
     }
 
-    public String getTurn() {
+    public int getTurn() {
         return turn;
     }
 
-    public void salvoDTO(String turn) {
+    public void salvoDTO(int turn) {
         this.turn = turn;
     }
 

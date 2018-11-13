@@ -34,8 +34,6 @@ $(function () {
                     method: 'GET',
                 })
                 .then(function(json){
-                //app.playerA = json.gamePlayer[0].player.username;
-              //  app.playerB = json.gamePlayer[1].player.username;
                 app.side =json.user.side;
                 app.YOU = json.user.userName;
                 }).catch(function(error){
@@ -57,12 +55,10 @@ $(function () {
             paintPosition(app.ships);
             paintPositionSalvoes(json, app.salvoes);
             shipSide();
-            //playerSide();
 
         }).catch(function (error) {
         console.log(error);
         });
-//////////////////
 
      function getIds(json){
 
