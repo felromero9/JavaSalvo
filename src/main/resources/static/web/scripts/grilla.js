@@ -312,15 +312,14 @@ function mapShips(){
                   width = 1;
                   height = ship.cells.length;
                }
-          //$('#'+ship.type).attr("data-gs-x",x).attr("data-gs-y",y).attr("data-gs-width",width).attr("data-gs-height",height);
           grid.addWidget($("<div id='"+ship.type+"'><div class='grid-stack-item-content "+ship.type.toLowerCase()+"'></div><div/>"),
                        x, y, width, height);
 
          })
      }
 
-}
 
+}
 
 
 

@@ -10,7 +10,7 @@ public final class Messages {
   public static final String FORBIDDEN_AUTHORITY = "NO AUTHORITY ";
   public static final String FORBIDDEN_SALVO_TURN = "SHOTS AMOUNT HAS BEEN EXCEEDED";
   public static final String UNAUTHORIZED_NO_LOGGED = "YOU ARE NO LOGGED";
-  public static final String UNAUTHORIZED_NO_CONECTED = "NO ONE IS CONECTED, PLIS LOGGIN ";
+  public static final String UNAUTHORIZED_NO_CONECTED = "NO ONE IS CONECTED, PLEAS LOGGIN ";
   public static final String UNAUTHORIZED_NO_SUCH_GAME = "NO SUCH GAME";
   public static final String UNAUTHORIZED_GAME = " THIS IS NOT YOUR GAME";
   public static final String UNAUTHORIZED_SHIPS = "YOU ALREADY HAVE SHIPS OR MISSING SHIPS";

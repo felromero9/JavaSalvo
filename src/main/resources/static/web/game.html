@@ -14,88 +14,111 @@
     </head>
 
 <body>
-    <div class="title">
-    <h1>BATTLE FIGHT!!</h1>
-    </div>
-    <div style="text-align: right">
-        <button type="button" id="logoutButton" class="btn btn-primary">  <i class="fas fa-sign-in-alt"></i>Logout</button>
+<div id="app">
+<div class="title">
+  <h1>BATTLE FIGHT!!</h1>
+  <h2>TEAM: {{side}} -- YOU ARE: {{YOU}}</h2>
 
-    </div>
+  <div class="col-3">
+  <table class="table table-dark ">
+    <tr>
 
-      <!-- div solo para colocar el borde y posicionar en base a la altura y anchura-->
-    <div class="grid-ships">
-      <!-- div que usa la librería gridstack grid-stack-10 se indica que son 10 columnas-->
-      <div id="grid" class="grid-stack grid-stack-10">
+      <td>TEAM: </td>
+      <td> {{side}} </td>
+    </tr>
+    <td>YOU ARE:</td>
+    <td>{{YOU}}</td>
+  </table>
+  </div>
+</div>
+
+<div style="text-align: right">
+  <button type="button" id="logoutButton" class="btn btn-primary">  <i class="fas fa-sign-in-alt"></i>Logout</button>
+</div>
+
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-4">
+      <h3>MY TABLE</h3>
+      <div class="grid-ships">
+          <div id="grid" class="grid-stack grid-stack-10"> </div>
+      </div>
+      <div style="text-align: left">
+        <button type="button" id="sendShips" class="btn btn-primary">Place Ships</button>
       </div>
     </div>
+
+    <div class="col-4">
+      <div>
+       <table class="tableSalvoLocation" id="tableSalvo">
+          <h3>SALVO LOCATION TABLE </h3>
+          <thead>
+          <tr>
+            <th v-for="horizontalCells of horizontal">
+              {{horizontalCells}}
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr v-for="v in vertical">
+              <td>{{v}}</td>
+              <td :id="v+1" class="cell"></td>
+              <td :id="v+2" class="cell"></td>
+              <td :id="v+3" class="cell"></td>
+              <td :id="v+4" class="cell"></td>
+              <td :id="v+5" class="cell"></td>
+              <td :id="v+6" class="cell"></td>
+              <td :id="v+7" class="cell"></td>
+              <td :id="v+8" class="cell"></td>
+              <td :id="v+9" class="cell"></td>
+              <td :id="v+10" class="cell"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align: left">
+        <button type="button" id="sendSalvoes" class="btn btn-primary">Shots Salvoes</button>
+      </div>
+      </div>
+
+
+
     </div>
+</div>
 
 
+  <!-- <h2>{{msgA}} {{playerA}}  <span v-if="playerA.length > 0 && playerB.length > 0"> vs </span> {{msgB}} {{playerB}}</h2>
 
-    <div id="app">
-    <h2>{{msgA}} {{playerA}}  <span v-if="playerA.length > 0 && playerB.length > 0"> vs </span> {{msgB}} {{playerB}}</h2>
-    <h2>TEAM: {{side}} -- YOU ARE: {{YOU}}</h2>
-    <div class="col-xs-5">
-        <table class="tableShipLocation" id="tableShips">
-              <h3>SHIPS LOCATION TABLE</h3>
+   <div class="col-xs-5">
+     <table class="tableShipLocation" id="tableShips">
+           <h3>SHIPS LOCATION TABLE</h3>
+          <thead>
+             <tr>
+                 <th v-for="horizontalCells of horizontal">
+                     {{horizontalCells}}
+                 </th>
+             </tr>
+         </thead>
 
-              <div style="text-align: left">
-                  <button type="button" id="sendShips" class="btn btn-primary">Join Ships</button>
-              </div>
-
-             <thead>
-                <tr>
-                    <th v-for="horizontalCells of horizontal">
-                        {{horizontalCells}}
-                    </th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr v-for="v in vertical">
-                  <td>{{v}}</td>
-                  <td :id="v+1"></td>
-                  <td :id="v+2"></td>
-                  <td :id="v+3"></td>
-                  <td :id="v+4"></td>
-                  <td :id="v+5"></td>
-                  <td :id="v+6"></td>
-                  <td :id="v+7"></td>
-                  <td :id="v+8"></td>
-                  <td :id="v+9"></td>
-                  <td :id="v+10"></td>
-                </tr>
-            </tbody>
+         <tbody>
+             <tr v-for="v in vertical">
+               <td>{{v}}</td>
+               <td :id="v+1"></td>
+               <td :id="v+2"></td>
+               <td :id="v+3"></td>
+               <td :id="v+4"></td>
+               <td :id="v+5"></td>
+               <td :id="v+6"></td>
+               <td :id="v+7"></td>
+               <td :id="v+8"></td>
+               <td :id="v+9"></td>
+               <td :id="v+10"></td>
+             </tr>
+         </tbody>-->
         </table>
     </div>
 
-   <div class="col-xs-5">
-      <table class="tableSalvoLocation" id="tableSalvo">
-            <h3>SALVO LOCATION TABLE </h3>
-        <thead>
-            <tr>
-                <th v-for="horizontalCells of horizontal">
-                    {{horizontalCells}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="v in vertical">
-                <td>{{v}}</td>
-                <td :id="v+1+'s'"></td>
-                <td :id="v+2+'s'"></td>
-                <td :id="v+3+'s'"></td>
-                <td :id="v+4+'s'"></td>
-                <td :id="v+5+'s'"></td>
-                <td :id="v+6+'s'"></td>
-                <td :id="v+7+'s'"></td>
-                <td :id="v+8+'s'"></td>
-                <td :id="v+9+'s'"></td>
-                <td :id="v+10+'s'"></td>
-            </tr>
-        </tbody>
-    </table>
-   </div>
+
 
 </div>
 

@@ -6,6 +6,17 @@
 }
 
 .grid-ships{
+    /* border: solid black;*/
+    background-image: url('image.png');
+    background-size: cover;
+    height: 385px;
+    width: 385px;
+    padding-top:35px;
+    padding-left:35px;
+
+    }
+
+.grid-salvoes{
     border: solid black;
     background-image: url('image.png');
     background-size: cover;

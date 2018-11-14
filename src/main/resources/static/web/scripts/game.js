@@ -36,10 +36,13 @@ $(function () {
                 .then(function(json){
                 app.side =json.user.side;
                 app.YOU = json.user.userName;
+                fetchGame_view();
+
                 }).catch(function(error){
                 console.log("error fatal");
                 });
 
+function fetchGame_view(){
     fetchJson("http://localhost:8080/api/game_view/"+ numberVariable, {
         method: 'GET',
 
@@ -59,7 +62,7 @@ $(function () {
         }).catch(function (error) {
         console.log(error);
         });
-
+}
      function getIds(json){
 
         json.gamePlayer.forEach(function(gamePlay){
@@ -97,7 +100,7 @@ $(function () {
     }
 
     function mySalvosStyle(cell, json, i) {
-        $('#' + cell + 's').addClass("my-salvo").html(json.salvoes[i].turn);
+        $('#' + cell).addClass("my-salvo").html(json.salvoes[i].turn);
     }
 
     function opponentSalvosStyle(cell, json, i){

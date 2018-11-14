@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
 
     //JOIN GAME
     $('#app').on('click', '.joinGame', function(){
-         console.log("holaaaa");
+         console.log("join game");
           var joinGameData = $(this).data('joingpid');
          joinGame(joinGameData);
     })
@@ -165,33 +165,45 @@ jQuery(document).ready(function($) {
 
 
     // JOIN SHIPS
-      $('#sendShips').click(function(){
+  $('#sendShips').click(function(){
+    console.log("it works");
+    reverseMapsShips();
+    sendShipsToBackEnd(app.myGpId);
+    location.reload();
+  })
 
-            console.log("it works");
-            reverseMapsShips();
-            sendShipsToBackEnd(app.myGpId);
-            location.reload();
+    function sendShipsToBackEnd (myGpId){
+        $.post({
+            url:"/api/games/players/"+myGpId+"/ships",
+            data: JSON.stringify(reverseMapsShips()),
+            dataType: "text",
+            contentType: "application/json"
+
         })
-
-        function sendShipsToBackEnd (myGpId){
-            $.post({
-                url:"/api/games/players/"+myGpId+"/ships",
-                data: JSON.stringify(reverseMapsShips()),
-                dataType: "text",
-                contentType: "application/json"
+            .done(function(response) {
+                console.log( "New set ships added");
+                console.log(response);
 
             })
-                .done(function(response) {
-                    console.log( "New set ships added");
-                    console.log(response);
-
-                })
-                .fail(function(response) {
-                    console.log( "fatal error cant join ships" + response.status );
-                    console.log(response);
-                });
-            }
+            .fail(function(response) {
+                console.log( "fatal error cant join ships" + response.status );
+                console.log(response);
+            });
+        }
 
 
-});
+    // ADDING SALVOES
+
+    $(".cell").on('click', function(){
+     if(!$(this).hasClass("targeted")){
+        $(this).addClass("targeted")
+        console.log($(this).attr("id"));
+     }
+         else if ($(this).hasClass("targeted")){
+            $(this).removeClass("targeted")
+         };
+    })
+
+
+  });
 
