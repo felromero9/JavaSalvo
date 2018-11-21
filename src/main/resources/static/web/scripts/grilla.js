@@ -208,7 +208,6 @@ $(".grid-stack-item").each(function(){
 console.log(newShips);
 return newShips;
 }
-
 // CONVERT LETTER FOR LETTER IN NUMBER
 function getLetter(y){
     switch (y) {
@@ -246,7 +245,6 @@ function getLetter(y){
         console.log("default");
     }
 }
-
 // CONVERT LETTER FOR NUMBER IN CELLS
 function getNumber(y){
     switch (y) {
@@ -284,7 +282,6 @@ function getNumber(y){
         console.log("default");
     }
 }
-
 // MAPPING SHIPS TO ADD INFO
 function mapShips(){
     if(app.ships.length == 0){
@@ -317,7 +314,36 @@ function mapShips(){
 
          })
      }
+}
 
+
+
+// ADDING BUTTOM TO SEND SALVOES LOCATION TO BACKEND :)
+function addingClassSalvos(salvoes){
+    app.salvoes.forEach(function(salvoS){
+        salvoS.cells.forEach(function(cell){
+        $('#' + cell).addClass("targeted");
+        })
+    });
+}
+//addSalvosShots()
+
+function addSalvosShots(){
+    var array=[];
+
+    var newObject = new Object;
+
+    $("#tableSalvo td").each(function(){
+        if($(this).hasClass("targeted")){
+           array.push($(this).attr("id"));
+        }
+
+    })
+
+    newObject.turn = getTurn();
+    newObject.cells = array;
+    console.log(newObject);
+    return newObject;
 
 }
 

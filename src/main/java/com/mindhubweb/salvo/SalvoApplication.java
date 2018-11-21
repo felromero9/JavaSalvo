@@ -131,27 +131,4 @@ public class SalvoApplication {
 }
 
 
-/*public class GlobalAuthenticationConfigurerAdapter {
-
-	@Configuration
-	class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter{
-
-		@Autowired
-		PlayerRepository playerRepository;
-
-		@Override
-		public void init(AuthenticationManagerBuilder auth) throws Exception {
-			auth.userDetailsService(inputName-> {
-				Player player = playerRepository.findByUserName("inputName");
-				if (player != null) {
-					return new User(player.getUserName(), player.getPassword(),
-							AuthorityUtils.createAuthorityList("USER"));
-				} else {
-					throw new UsernameNotFoundException("Unknown user: " + inputName);
-				}
-			});
-		}
-	}
-
-}*/
 

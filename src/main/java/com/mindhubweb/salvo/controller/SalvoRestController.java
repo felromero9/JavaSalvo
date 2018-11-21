@@ -135,14 +135,70 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
 
   return  new ResponseEntity<>(makeMap("newSet","created"), HttpStatus.CREATED);
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
   @PostMapping("games/players/{gamePlayerId}/salvoes")
   public ResponseEntity<Map<String, Object>> addSalvoes(@PathVariable long gamePlayerId, Authentication authentication,
                                                         @RequestBody Salvo salvo) {
+
+
+    Optional<GamePlayer> currentGamePlayer = gamePlayerRepository.findById(gamePlayerId);
+
     if (isGuest(authentication)) {
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.UNAUTHORIZED_NO_LOGGED), HttpStatus.UNAUTHORIZED);
     }
+
+    if(!currentGamePlayer.isPresent() ){
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.UNAUTHORIZED_GAME), HttpStatus.FORBIDDEN);
+    }
+
+    Optional<GamePlayer> opponentGamePlayer = currentGamePlayer.get()
+                                                              .getGame()
+                                                              .getGamePlayers()
+                                                              .stream()
+                                                              .filter(gamePlayer -> gamePlayer.getId() != currentGamePlayer
+                                                                      .get().getId().intValue()).findFirst();
+    if (!opponentGamePlayer.isPresent()) {
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_OPPONENT), HttpStatus.FORBIDDEN);
+    }
+    int currentTurn = currentGamePlayer.get().getSalvoes().stream().sorted(Comparator.comparing(Salvo::getTurn).reversed())
+                                                                  .findFirst()
+                                                                  .orElse(new Salvo(0,null)).getTurn() + 1;
+
+    int opponentTurn = opponentGamePlayer.get().getSalvoes().stream().sorted(Comparator.comparing(Salvo::getTurn).reversed())
+                                                                  .findFirst()
+                                                                  .orElse(new Salvo(0,null)).getTurn();
+
+    if(currentTurn - opponentTurn > 1 || currentTurn - opponentTurn < -1) {
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_ERROR_OPPONENT_TURN), HttpStatus.FORBIDDEN);
+    }
+
+    Player player = playerRepository.findByUserName(authentication.getName());
+    if (currentGamePlayer.get().getPlayer().getId() != player.getId()) {
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.UNAUTHORIZED_SAVE_SALVOES), HttpStatus.UNAUTHORIZED);
+    }
+    if (salvo.getCells().size()==0) {
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SHIPS_EMPTY), HttpStatus.FORBIDDEN);
+    }
+    if (salvo.getCells().size()==0) {
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SEND_AT_LEAST_ONE_SALVO), HttpStatus.FORBIDDEN);
+    }
+
+
+    currentGamePlayer.get().addSalvo(salvo);
+    gamePlayerRepository.save(currentGamePlayer.get());
+
+    return  new ResponseEntity<>(makeMap("salvo shot","created"), HttpStatus.CREATED);
+
+}
+     /*
     Optional<GamePlayer> gamePlayer = gamePlayerRepository.findById(gamePlayerId);
     if (!gamePlayer.isPresent()) {
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.UNAUTHORIZED_GAME), HttpStatus.UNAUTHORIZED);
@@ -163,18 +219,41 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
     if(!gamePlayerOpponent.isPresent() || salvo.getTurn() -1 > gamePlayerOpponent.get().getSalvoes().size()) {
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SALVO_TURN), HttpStatus.FORBIDDEN);
     }
+
     if( gamePlayerOpponent.get().getShips().isEmpty()){
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SHIPS_EMPTY), HttpStatus.FORBIDDEN);
     }
 
     return  new ResponseEntity<>(makeMap("salvo shot","created"), HttpStatus.CREATED);
 
-  }
+  }*/
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   @GetMapping("/game_view/{gamePlayerId}")
     public ResponseEntity < Map<String, Object> > getGamePlayer(@PathVariable Long gamePlayerId, Authentication authentication){
         Optional<GamePlayer> gamePlayer = gamePlayerRepository.findById(gamePlayerId);

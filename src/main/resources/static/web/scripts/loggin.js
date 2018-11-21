@@ -4,8 +4,6 @@ jQuery(document).ready(function($) {
         $("#signupButton").toggle();
         $("#playerSide").toggle();
 
-
-
     });
 
 //SIGN UP------------------------------------------------------------------
@@ -22,15 +20,10 @@ jQuery(document).ready(function($) {
             console.log("please enter a username and password")
             alertify.error(' please enter a username and password ');
         }
-        console.log(radioVal);
+        console.log("radioVal");
     });
 
-   /* $('input').on('change', function() {
-       console.log($('input:checked')).val();
-    });*/
-
-
-    function postPlayer(newUserName, newUserPassword, newPlayerSide) {
+       function postPlayer(newUserName, newUserPassword, newPlayerSide) {
         $.post( "/api/players",{ userName: newUserName, password: newUserPassword, playerSide: newPlayerSide})
             .done(function( ) {
                 loginData();
@@ -164,7 +157,7 @@ jQuery(document).ready(function($) {
 
 
 
-    // JOIN SHIPS
+    // SEND SHIPS
   $('#sendShips').click(function(){
     console.log("it works");
     reverseMapsShips();
@@ -172,18 +165,16 @@ jQuery(document).ready(function($) {
     location.reload();
   })
 
-    function sendShipsToBackEnd (myGpId){
+    function sendShipsToBackEnd(myGpId){
         $.post({
             url:"/api/games/players/"+myGpId+"/ships",
             data: JSON.stringify(reverseMapsShips()),
             dataType: "text",
             contentType: "application/json"
-
         })
             .done(function(response) {
                 console.log( "New set ships added");
                 console.log(response);
-
             })
             .fail(function(response) {
                 console.log( "fatal error cant join ships" + response.status );
@@ -205,5 +196,30 @@ jQuery(document).ready(function($) {
     })
 
 
+
+$('#sendSalvoes').click(function(){
+    console.log("sending salvoes");
+    sendSalvoesToBackEnd(app.myGpId);
+})
+
+
+
+
+function sendSalvoesToBackEnd(myGpId){
+    $.post({
+        url: "/api/games/players/"+myGpId+"/salvoes",
+        data: JSON.stringify(addSalvosShots()),
+        dataType: "text",
+        contentType: "application/json"
+        })
+    .done(function(){
+        console.log("New set shots sends");
+    })
+    .fail(function(){
+        console.log("fatal error, the shots are lost" + response.status);
+        console.log(response);
+    })
+
+  }
   });
 

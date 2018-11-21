@@ -37,6 +37,7 @@ $(function () {
                 app.side =json.user.side;
                 app.YOU = json.user.userName;
                 fetchGame_view();
+                app.myId = json.user.id;
 
                 }).catch(function(error){
                 console.log("error fatal");
@@ -55,9 +56,10 @@ function fetchGame_view(){
             app.salvoes = json.salvoes;
 
            getIds(json);
-            paintPosition(app.ships);
+            //paintPosition(app.ships);
             paintPositionSalvoes(json, app.salvoes);
             shipSide();
+            addingClassSalvos(app.salvoes);
 
         }).catch(function (error) {
         console.log(error);
@@ -125,6 +127,9 @@ $('#logoutButton').click(function(){
     
 });
 
+
+
+
 function postLoginPlayerOut(userName, userPassword) {
     $.post("/api/logout", {username: userName, password: userPassword})
         .done(function () {
@@ -139,3 +144,15 @@ function postLoginPlayerOut(userName, userPassword) {
 }
 
 
+
+function getTurn(){
+var count=0;
+
+app.salvoes.forEach( function(salvo){
+if(salvoes.player.id == app.myId) {
+count ++
+}
+})
+return count + 1;
+
+}
