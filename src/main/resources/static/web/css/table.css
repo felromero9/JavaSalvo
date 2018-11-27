@@ -29,7 +29,6 @@ tr th:first-child{
 
 .my-salvo{
     color: blue;
-    /*background-image: url('x.gif');*/
     font-weight: bold;
 }
 
@@ -48,4 +47,17 @@ tr th:first-child{
     background-repeat: no-repeat;
     background-position: center;
 }
+.shot{
+    background-image: url('x.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.ship-down{
+    background-image: url('kaboom.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
+
+}

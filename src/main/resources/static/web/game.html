@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    </head>
+  <link rel="stylesheet" href="css/alertify.core.css" />
+
+</head>
 
 <body>
 <div id="app">
@@ -85,46 +87,51 @@
 
     </div>
 </div>
+  <div  class="col-xs-8" style="">
+    <table class="table table-dark">
+      <thead>
+      <tr>
+        <th>turn</th>
+        <th>hits on you</th>
+        <th>hits on opponent</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>hits</th>
+        <th>sunks</th>
+        <th>left</th>
+        <th>hits</th>
+        <th>sunks</th>
+        <th>left</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr  v-for="data in tableGame">
+        <td>{{data.turn}}</td>
+        <td>{{data.opponentHits}}</td>
+        <td>{{data.sunksPlayer}}</td>
+        <td>{{data.playerLefts}}</td>
+        <td>{{data.playerHits}}</td>
+        <td>{{data.sunksOpponent}}</td>
+        <td>{{data.opponentLefts}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div> <!-- close dive table info-->
 
 
-  <!-- <h2>{{msgA}} {{playerA}}  <span v-if="playerA.length > 0 && playerB.length > 0"> vs </span> {{msgB}} {{playerB}}</h2>
 
-   <div class="col-xs-5">
-     <table class="tableShipLocation" id="tableShips">
-           <h3>SHIPS LOCATION TABLE</h3>
-          <thead>
-             <tr>
-                 <th v-for="horizontalCells of horizontal">
-                     {{horizontalCells}}
-                 </th>
-             </tr>
-         </thead>
-
-         <tbody>
-             <tr v-for="v in vertical">
-               <td>{{v}}</td>
-               <td :id="v+1"></td>
-               <td :id="v+2"></td>
-               <td :id="v+3"></td>
-               <td :id="v+4"></td>
-               <td :id="v+5"></td>
-               <td :id="v+6"></td>
-               <td :id="v+7"></td>
-               <td :id="v+8"></td>
-               <td :id="v+9"></td>
-               <td :id="v+10"></td>
-             </tr>
-         </tbody>-->
-        </table>
-    </div>
+    </div> <!--close div app-->
 
 
 
 </div>
+<script src="scripts/alertify.min.js"></script>
 
 
 
-    <!-- libreria y demás dependencias-->
+<!-- libreria y demás dependencias-->
     <script  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script src="dist/jquery-ui.min.js"></script>

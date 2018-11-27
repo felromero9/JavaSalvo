@@ -319,15 +319,30 @@ function mapShips(){
 
 
 // ADDING BUTTOM TO SEND SALVOES LOCATION TO BACKEND :)
-function addingClassSalvos(salvoes){
+function addingClassSalvos(){
+
     app.salvoes.forEach(function(salvoS){
-        salvoS.cells.forEach(function(cell){
-        $('#' + cell).addClass("targeted");
-        })
+         if(app.myId == salvoS.player.player.id){
+            salvoS.cells.forEach(function(cell){
+                $('#' + cell).addClass("shot")
+            })
+            salvoS.hits.forEach(function(hit){
+                $('#' + hit).removeClass("shot")
+                $('#' + hit).addClass("ship-down")
+            })
+         }
+         else{
+            salvoS.hits.forEach(function(hit){
+                var shot = hit;
+                var x = parseInt(shot.slice(1))-1;
+                var y = parseInt(getNumber(shot.slice(0,1)));
+                $("#grid").append('<div id="'+shot+'-down" style="position:absolute; top:'+y*35+'px; left:'+x*35+'px; width:35px; height:35px" class="ship-down" ></div>');
+            })
+         }
     });
 }
-//addSalvosShots()
 
+// addSalvoesShots show me the class id to send in the function sendSalvoesToBackEnd(myGpId)
 function addSalvosShots(){
     var array=[];
 
@@ -340,7 +355,7 @@ function addSalvosShots(){
 
     })
 
-    newObject.turn = getTurn();
+    //newObject.turn = getTurn();
     newObject.cells = array;
     console.log(newObject);
     return newObject;

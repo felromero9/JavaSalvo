@@ -176,7 +176,16 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
                                                                   .findFirst()
                                                                   .orElse(new Salvo(0,null)).getTurn();
 
-    if(currentTurn - opponentTurn > 1 || currentTurn - opponentTurn < -1) {
+
+    /*if(currentTurn - opponentTurn > 1 || currentTurn - opponentTurn < -1) {
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_ERROR_OPPONENT_TURN), HttpStatus.FORBIDDEN);
+    }*/
+
+    if(currentGamePlayer.get().getId() < opponentGamePlayer.get().getId() && currentTurn - opponentTurn != 1){
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_ERROR_OPPONENT_TURN), HttpStatus.FORBIDDEN);
+    }
+
+    if(currentGamePlayer.get().getId() > opponentGamePlayer.get().getId() && currentTurn - opponentTurn != 0){
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_ERROR_OPPONENT_TURN), HttpStatus.FORBIDDEN);
     }
 
@@ -185,13 +194,14 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.UNAUTHORIZED_SAVE_SALVOES), HttpStatus.UNAUTHORIZED);
     }
     if (salvo.getCells().size()==0) {
-      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SHIPS_EMPTY), HttpStatus.FORBIDDEN);
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SHOTS), HttpStatus.FORBIDDEN);
     }
     if (salvo.getCells().size()==0) {
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SEND_AT_LEAST_ONE_SALVO), HttpStatus.FORBIDDEN);
     }
 
 
+    salvo.setTurn(currentTurn);
     currentGamePlayer.get().addSalvo(salvo);
     gamePlayerRepository.save(currentGamePlayer.get());
 
@@ -221,7 +231,7 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
     }
 
     if( gamePlayerOpponent.get().getShips().isEmpty()){
-      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SHIPS_EMPTY), HttpStatus.FORBIDDEN);
+      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_SHOTS), HttpStatus.FORBIDDEN);
     }
 
     return  new ResponseEntity<>(makeMap("salvo shot","created"), HttpStatus.CREATED);

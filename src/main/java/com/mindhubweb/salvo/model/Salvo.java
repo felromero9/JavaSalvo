@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Salvo {
@@ -34,7 +35,41 @@ public class Salvo {
         this.cells=cells;
     }
 
+    public Map<String, Object> salvoDto(){
+        Map<String, Object> dto = new HashMap<>();
+        dto.put("turn",this.turn);
+        dto.put("player", this.gamePlayer.gamePlayerDto());
+        dto.put("cells",this.cells);
+        dto.put("hits", this.getHits());
 
+        return dto;
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  private Optional<GamePlayer> getOpponentGP(){
+        return  this.getGamePlayer().getGame()
+                .getGamePlayers().stream()
+                .filter(gamePlayer -> getId() != this.gamePlayer.getId().intValue()).findFirst();// here is the opponent
+  }
+
+
+    public List<String> getHits(){
+
+        return cells.stream().filter( cell -> getOpponentGP()
+                                            .get()
+                                            .getShips()
+                                            .stream()
+                                            .anyMatch(ship -> ship.getCells().contains(cell))).collect(Collectors.toList());
+    };
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public Long getId() {
         return id;
     }
@@ -63,16 +98,15 @@ public class Salvo {
         return turn;
     }
 
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
     public void salvoDTO(int turn) {
         this.turn = turn;
     }
 
-    public Map<String, Object> salvoDto(){
-        Map<String, Object> dto = new HashMap<>();
-        dto.put("turn",this.turn);
-        dto.put("player", this.gamePlayer.gamePlayerDto());
-        dto.put("cells",this.cells);
 
-        return dto;
-    }
+
+
 }

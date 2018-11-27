@@ -103,7 +103,7 @@ jQuery(document).ready(function($) {
             .done(function( ) {
                 console.log( "You are logged out.");
                 location.reload();
-
+                location.href='http://localhost:8080/web/games.html';
 
             })
             .fail(function( jqXHR, textStatus ) {
@@ -130,7 +130,7 @@ jQuery(document).ready(function($) {
             });
         }
 
-    //JOIN GAME
+    //JOIN GAME--------------------------------------------------
     $('#app').on('click', '.joinGame', function(){
          console.log("join game");
           var joinGameData = $(this).data('joingpid');
@@ -157,7 +157,7 @@ jQuery(document).ready(function($) {
 
 
 
-    // SEND SHIPS
+    // SEND SHIPS -----------------------------------------------
   $('#sendShips').click(function(){
     console.log("it works");
     reverseMapsShips();
@@ -183,7 +183,7 @@ jQuery(document).ready(function($) {
         }
 
 
-    // ADDING SALVOES
+    // ADDING SALVOES-----------------------------------------------------------------
 
     $(".cell").on('click', function(){
      if(!$(this).hasClass("targeted")){
@@ -198,7 +198,7 @@ jQuery(document).ready(function($) {
 
 
 $('#sendSalvoes').click(function(){
-    console.log("sending salvoes");
+    console.log("buttom salvoes");
     sendSalvoesToBackEnd(app.myGpId);
 })
 
@@ -214,10 +214,16 @@ function sendSalvoesToBackEnd(myGpId){
         })
     .done(function(){
         console.log("New set shots sends");
+         location.reload();
+
+
     })
-    .fail(function(){
-        console.log("fatal error, the shots are lost" + response.status);
+    .fail(function(response){
+
+        console.log("fatal error " + response.status);
         console.log(response);
+        alertify.error(response.responseText)
+
     })
 
   }

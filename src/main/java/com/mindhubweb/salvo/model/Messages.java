@@ -9,9 +9,9 @@ public final class Messages {
   public static final String FORBIDDEN_OPPONENT = "YOU DONT HAVE OPPONENT";
   public static final String FORBIDDEN_AUTHORITY = "NO AUTHORITY ";
   public static final String FORBIDDEN_SALVO_TURN = "SHOTS AMOUNT HAS BEEN EXCEEDED";
-  public static final String FORBIDDEN_SHIPS_EMPTY = "SHIPS ARE EMPTY";
+  public static final String FORBIDDEN_SHOTS = "SHOTS ARE EMPTY";
   public static final String FORBIDDEN_SEND_AT_LEAST_ONE_SALVO = "SEND AT LEAST ONE SALVO";
-  public static final String FORBIDDEN_ERROR_OPPONENT_TURN = "ERROR OPPONENT TURN";
+  public static final String FORBIDDEN_ERROR_OPPONENT_TURN = "WAIT FOR YOUR TURN";
   public static final String UNAUTHORIZED_NO_LOGGED = "YOU ARE NO LOGGED";
   public static final String UNAUTHORIZED_NO_CONECTED = "NO ONE IS CONECTED, PLEAS LOGGIN ";
   public static final String UNAUTHORIZED_NO_SUCH_GAME = "NO SUCH GAME";

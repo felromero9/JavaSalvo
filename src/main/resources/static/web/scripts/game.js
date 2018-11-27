@@ -26,7 +26,19 @@ $(function () {
             myId:"",
             opponentId:"",
             side:"",
-            YOU:""
+            YOU:"",
+            tableGame:[
+                          {
+                            turn:"",
+                            opponentHits:[],
+                            sunksPlayerTable:[],
+                            playerLeftsTable:"",
+                            playerHits:[],
+                            sunksOpponent:[],
+                            opponentLefts:""
+
+                          }
+                      ]
         }
     });
 
@@ -57,11 +69,11 @@ function fetchGame_view(){
 
            getIds(json);
             //paintPosition(app.ships);
-            paintPositionSalvoes(json, app.salvoes);
+           //paintPositionSalvoes(json, app.salvoes);
             shipSide();
-            addingClassSalvos(app.salvoes);
+            addingClassSalvos();
 
-        }).catch(function (error) {
+        }).catch(function(error) {
         console.log(error);
         });
 }
@@ -113,6 +125,8 @@ function fetchGame_view(){
             $('#' + cell).addClass("opponent-salvo").html(json.salvoes[i].turn);
         }
     }
+
+
     function getmsg(json) {
         if(numberVariable == json.gamePlayer[0].id){
             app.msgA="YOU ARE";
@@ -121,13 +135,14 @@ function fetchGame_view(){
     }
 });
 
+
+    //LOGOUT----------------------------------------------------------
+
 $('#logoutButton').click(function(){
     console.log("adios");
     postLoginPlayerOut();
     
 });
-
-
 
 
 function postLoginPlayerOut(userName, userPassword) {
