@@ -219,10 +219,10 @@ function sendSalvoesToBackEnd(myGpId){
 
     })
     .fail(function(response){
-
+        var responseData = JSON.parse(response.responseText);
         console.log("fatal error " + response.status);
         console.log(response);
-        alertify.error(response.responseText)
+        alertify.error(responseData.error)
 
     })
 

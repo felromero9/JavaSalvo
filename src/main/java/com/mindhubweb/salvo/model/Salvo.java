@@ -41,22 +41,23 @@ public class Salvo {
         dto.put("player", this.gamePlayer.gamePlayerDto());
         dto.put("cells",this.cells);
         dto.put("hits", this.getHits());
+        dto.put("sinks", this.getSinks());
 
         return dto;
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
   private Optional<GamePlayer> getOpponentGP(){
         return  this.getGamePlayer().getGame()
                 .getGamePlayers().stream()
-                .filter(gamePlayer -> getId() != this.gamePlayer.getId().intValue()).findFirst();// here is the opponent
+                .filter(gamePlayer -> gamePlayer.getId() != this.gamePlayer.getId().intValue()).findFirst();// here is the opponent
   }
 
 
     public List<String> getHits(){
 
-        return cells.stream().filter( cell -> getOpponentGP()
+        return this.cells.stream().filter( cell -> getOpponentGP()
                                             .get()
                                             .getShips()
                                             .stream()
@@ -64,12 +65,27 @@ public class Salvo {
     };
 
 
+    private List<Map<String, Object>> getSinks() {
+        List<String> allShots = new ArrayList<>();
+        this.gamePlayer.getSalvoes()
+                .stream()
+                .filter(salvo -> salvo.getTurn() <= this.getTurn())
+                .forEach(salvo -> allShots.addAll(salvo.getCells())); //aca busca todos los shots
+
+        List<Map<String, Object>> allsinks = new ArrayList<>();
+
+        //comparacion con el gpoponent
+        if(getOpponentGP().isPresent()) {
+            allsinks = getOpponentGP()
+                    .get()
+                    .getShips()
+                    .stream()
+                    .filter(ship -> allShots.containsAll(ship.getCells())).map(Ship::shipsDto).collect(Collectors.toList());
+        }
+        return allsinks;
+    };
 
 
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public Long getId() {
         return id;
     }

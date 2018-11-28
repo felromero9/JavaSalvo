@@ -239,30 +239,6 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
   }*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   @GetMapping("/game_view/{gamePlayerId}")
     public ResponseEntity < Map<String, Object> > getGamePlayer(@PathVariable Long gamePlayerId, Authentication authentication){
