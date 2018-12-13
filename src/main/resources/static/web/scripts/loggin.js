@@ -1,10 +1,22 @@
 jQuery(document).ready(function($) {
-    $("#newUserButton").change(function(){
-        $("#loginButton").toggle();
+
+    $("#newUserButton").click(function(){
+        $("#loginButton").hide();
         $("#signupButton").toggle();
         $("#playerSide").toggle();
-
+       $("#usernameForm").toggle();
+       $("#passwordForm").toggle();
     });
+
+   $("#joinUserButton").click(function(){
+
+        $("#loginButton").toggle();
+        $("#signupButton").hide();
+        $("#playerSide").hide();
+       $("#usernameForm").toggle();
+       $("#passwordForm").toggle();
+    });
+
 
 //SIGN UP------------------------------------------------------------------
     $("#signupButton").click(function(){

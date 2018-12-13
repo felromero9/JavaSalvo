@@ -135,14 +135,6 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
 
   return  new ResponseEntity<>(makeMap("newSet","created"), HttpStatus.CREATED);
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
 
   @PostMapping("games/players/{gamePlayerId}/salvoes")
   public ResponseEntity<Map<String, Object>> addSalvoes(@PathVariable long gamePlayerId, Authentication authentication,
@@ -176,10 +168,6 @@ public ResponseEntity<Map<String, Object>> joinShips (@RequestBody Set<Ship> shi
                                                                   .findFirst()
                                                                   .orElse(new Salvo(0,null)).getTurn();
 
-
-    /*if(currentTurn - opponentTurn > 1 || currentTurn - opponentTurn < -1) {
-      return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_ERROR_OPPONENT_TURN), HttpStatus.FORBIDDEN);
-    }*/
 
     if(currentGamePlayer.get().getId() < opponentGamePlayer.get().getId() && currentTurn - opponentTurn != 1){
       return new ResponseEntity<>(makeMap(Messages.ERROR_KEY, Messages.FORBIDDEN_ERROR_OPPONENT_TURN), HttpStatus.FORBIDDEN);

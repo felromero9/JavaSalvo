@@ -96,6 +96,7 @@ $(function () {
     function checkIfGuest(){
         if (app.user!=="Guest"){
             $("#logoutButton").show();
+            $("#welcomePlayer").show();
             $("#myForm").hide();
             $("#newGameButton").show();
             $('#title').hide();
@@ -107,6 +108,7 @@ $(function () {
         }
         else{
             $("#logoutButton").hide();
+            $("#welcomePlayer").hide();
             $("#myForm").show();
             $("#newGameButton").hide();
             $('#title').hide();

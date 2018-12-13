@@ -1,6 +1,62 @@
 
 body{
-    background-image:url("../images/fondo.jpg");}
+    background-image:url("../images/imageZombiesVsPlants.jpg");
+    background-size: cover;
+    /*background-size: contain;*/
+   background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#newUserButton {
+  background-image: url('../images/signup_passive.png');
+  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:150px;
+  height:100px;
+  border-style:none;
+}
+
+#newUserButton:hover {
+  background-image: url('../images/signup_active.png');
+  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:150px;
+  height:100px;
+    border-style:none;
+}
+
+#joinUserButton {
+  background-image: url('../images/signin_passive.png');
+  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:150px;
+  height:100px;
+  border-style:none;
+}
+
+#joinUserButton:hover {
+  background-image: url('../images/signin_active.png');
+  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:150px;
+  height:100px;
+    border-style:none;
+}
+
+
+#loginButton, #signupButton{
+  background-image: url('../images/tickmark_submit.png');
+ background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:90px;
+  height:90px;
+
+}
 
 table {
     border: 2px black;
@@ -8,6 +64,7 @@ table {
     margin-left: 2px;
     margin-right: 2px;
 }
+
 
 tr {
     border: 2px black;
@@ -33,15 +90,19 @@ td {
     margin-left: 24%;
 }
 
-h1{
-   font-family: "Ebrima";
-    text-align: center;
+h1, h2, h3, h4, th, label, input{
+ font-family:"Indie Flower";
+ text-align: center;
 }
 
-h2{
-    font-family: "revert";
+.gameList{
+background-color: #A31696;
 }
 
-h3{
-    font-family: "Yu Gothic Light";
+.tableScore{
+background-color: blue;
+}
+
+#myForm{
+    margin-top: 15px;
 }
