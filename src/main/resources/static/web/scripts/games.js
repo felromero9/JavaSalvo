@@ -104,6 +104,10 @@ $(function () {
             $('#newgame').show();
             $('.joinGame').show();
             $('#playerSide').show();
+            $("#newUserButton").hide();
+            $("#joinUserButton").hide();
+            $("#gameList").show();
+            $("#tableScore").show();
 
         }
         else{
@@ -116,6 +120,10 @@ $(function () {
             $('#newgame').hide();
             $('.joinGame').hide();
             $('#playerSide').hide();
+            $("#newUserButton").show();
+            $("#joinUserButton").show();
+            $("#gameList").hide();
+            $("#tableScore").hide();
 
 
 

@@ -14,35 +14,29 @@
 <div id="app">
 
   <!-- start title-->
-
     <div class="title" style="text-align: center; display:none"  id="welcome" >
         <img src="images/plantvszombie_mindhub.png" alt="Cinque Terre" width="650" height="450">
-      <!-- START LOGGIN OR JOIN UP USER WITH IMAGEN-->
+
+<!-- START LOGGIN OR JOIN UP USER WITH IMAGEN-->
       <div class="container">
         <div class="row justify-content-md-center ">
           <div class="col-md-auto" id="newUserButton"></div>
           <div class="col-md-auto" id="joinUserButton"></div>
         </div>
       </div>
-      <!-- FINISH LOGGIN OR JOIN UP USER-->
+<!-- FINISH LOGGIN OR JOIN UP USER-->
     </div>
+
     <div class="title" style="text-align: center" id="title"> <!--title id hide-->
         <h1> ARE YOU READY FOR THE BATTLE?? </h1>
         <h2> Welcome to Salvo Game or : </h2>
         <h3> PLANTS VS ZOMBIES: EPIC BATTLE</h3>
 
     </div>
-    <div id="welcomePlayer" style="display: none">
-        <h1> Hi Player : {{playerWelcome}}, your team is : {{side}} </h1>
-    </div>
+
   <!-- finish title-->
 
-<!-- buttons of new and logout -->
-    <div style="text-align: right">
-        <button type="button" id="newgame" class="btn btn-primary w-10 mx-auto" style="display: none"> New Game</button>
-        <button type="button" id="logoutButton" class="btn btn-primary" style="display: none"> <i class="fas fa-sign-in-alt"></i>Logout</button>
-    </div>
-  <!-- finish buttons of new and logout -->
+
 
 
 <!-- validation forms-->
@@ -50,8 +44,6 @@
       <div class="row justify-content-center " style="text-align: center" >
         <div class="col-sm-4">
           <form class="table table-hover text-centered"  style="text-align: center">
-
-
 
   <!-- FORM FOR USERNAME AND PASSWORD -->
             <div class="form-group" id="usernameForm" style="display: none">
@@ -63,16 +55,18 @@
   <!-- FINISH FORM USER  AND PASSWORD-->
 
   <!-- START PLAYERSIDE -->
-            <div id="playerSide">
+            <div class="container" id="playerSide">
               <h4> select player side:</h4>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="zombie" name="groupOfDefaultRadios" value="ZOMBIES" >
-                <label class="custom-control-label" for="zombie"> ZOMBIE</label>
-              </div>
+              <div class="row justify-content-center ">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="zombie" name="groupOfDefaultRadios" value="ZOMBIES" >
+                  <label class="custom-control-label" for="zombie" id="zombieLabel"> </label>
+                </div>
 
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="plants" name="groupOfDefaultRadios" value="PLANTS" checked >
-                <label class="custom-control-label" for="plants">PLANTS</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="plants" name="groupOfDefaultRadios" value="PLANTS" checked >
+                  <label class="custom-control-label" for="plants" id="plantLabel"></label>
+                </div>
               </div>
             </div>
   <!-- FINISH PLAYERSIDE-->
@@ -84,58 +78,65 @@
                 <div class="col-md-auto" id="signupButton" style="display: none"></div>
               </div>
             </div>
-
-            <!--<button type="button" id="loginButton" class="btn btn-primary" style="display: none"> <i class="fas fa-sign-out-alt"></i>Login </button>
-            <button type="button" id="signupButton" class="btn btn-primary" style="display: none"> Sign Up</button>-->
 <!-- FINISH BUTTON LOGIN AND SINGUP -->
           </form>
         </div>
       </div>
       </div>
 
-<!-- START THE GAME LIST -->
-    <div class="gameList" style="text-align: center; display:none" >
-      <h4>THE GAME LIST</h4>
-      <div>
-        <ul class="ul-table w-50 mx-auto" style="text-align: left">
-            <li v-for="game of games"
-                v-if="game.gamePlayers[1] && game.gamePlayers[0].player.id==myPlayerId">
-                <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
-                  GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
-                </a>
-            </li>
+  <div class="row justify-content-md-center" id="welcomePlayer" style="display: none">
+    <!-- buttons of new and logout -->
+    <div class="col-auto" id="newgame" style="display: none"></div>
+    <div class="col-auto" id="logoutButton" style="display: none"></div>
+    <!-- finish buttons of new and logout -->
+  </div> <!--finish div row-->
 
-            <li v-else-if="game.gamePlayers[1] && game.gamePlayers[1].player.id==myPlayerId">
-                <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[1].id'>
-                  GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
-                </a>
-            </li>
+  <!-- START THE GAME LIST -->
+    <div  class="container" id="gameList" style="display:none; width:650px " >
+        <div style="">
+          <h1> Hi {{playerWelcome}}, your team is {{user.side}} </h1>
+          <h4>GAMES IN PROGRESS</h4>
 
-            <li v-else-if="game.gamePlayers[1]">
-              GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
-            </li>
+          <ul class="ul-table w-65  mx-auto" >
+              <li v-for="game of games"
+                  v-if="game.gamePlayers[1] && game.gamePlayers[0].player.id==myPlayerId">
+                  <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
+                    GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
+                  </a>
+              </li>
 
-            <li v-else-if="game.gamePlayers[0].player.id==myPlayerId">
-                <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
-                  GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} is waiting for you?
-                </a>
-            </li>
+              <li v-else-if="game.gamePlayers[1] && game.gamePlayers[1].player.id==myPlayerId">
+                  <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[1].id'>
+                    GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
+                  </a>
+              </li>
 
-            <li v-else-if="game.gamePlayers.length < 2 && game.gamePlayers[0].player.id != myPlayerId ">
-                        GAME #{{game.id}} : {{game.gamePlayers[0].player.username}} vs waiting for you?
-                          <button class="joinGame" type="button" :data-joinGpId="game.id" :id="'joinGame'+game.id" style="display: none">join and fight</button>
-                      </li>
-        </ul>
-      </div>
-    </div>
+              <li v-else-if="game.gamePlayers[1]">
+                GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} vs {{game.gamePlayers[1].player.username}}
+              </li>
+
+              <li v-else-if="game.gamePlayers[0].player.id==myPlayerId">
+                  <a :href='"http://localhost:8080/web/game.html?gp="+game.gamePlayers[0].id'>
+                    GAME # {{game.id}}: {{game.gamePlayers[0].player.username}} wants to fight
+                  </a>
+              </li>
+
+              <li v-else-if="game.gamePlayers.length < 2 && game.gamePlayers[0].player.id != myPlayerId ">
+                          GAME #{{game.id}} : {{game.gamePlayers[0].player.username}} wants to fight
+                <button class="joinGame" type="button" :data-joinGpId="game.id" :id="'joinGame'+game.id" style="display: none">join</button>
+                        </li>
+          </ul>
+        </div>
+
+
 <!-- FINISH THE GAME LIST -->
 
  <!-- START TABLE SCORE -->
-    <div class="tableScore" style="display:none">
-      <h4>HERE ARE THE BEST PLAYERS</h4>
-      <table class="table table-sm table-dark w-50 mx-auto">
-        <thead>
-          <tr>
+      <div id="tableScore" style="display:none">
+      <h4>CHECK THE SCORE BELOW</h4>
+      <table class="table table-hover table-sm w-50 mx-auto">
+        <thead class="thead-dark">
+          <tr class="bg-info">
               <th>PLAYER NAME</th>
               <th>GL </th>
               <th>GT </th>
@@ -145,16 +146,17 @@
         </thead>
         <tbody>
             <tr v-for="info of dataObjectsOfPlayers">
-                <td>{{info.userName}}</td>
-                <td>{{info.lost}}</td>
-                <td>{{info.tied}}</td>
-                <td>{{info.win}}</td>
-                <td>{{info.points}}</td>
+                <td class="bg-info">{{info.userName}}</td>
+                <td class="bg-info">{{info.lost}}</td>
+                <td class="bg-info">{{info.tied}}</td>
+                <td class="bg-info">{{info.win}}</td>
+                <td class="bg-info">{{info.points}}</td>
             </tr>
         </tbody>
       </table>
     </div>
 <!-- FINISH TABLE SCORE -->
+    </div>
 </div>
 
 

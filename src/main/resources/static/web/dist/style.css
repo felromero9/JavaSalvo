@@ -26,55 +26,100 @@
     padding-left:35px;
 
     }
-
+/* PLANTS CLASS */
 .lanzamaiz{
-    background-image: url('lanzamaiz.jpg');
+    background-image: url('lanzamaiz-horizontal.png');
+    background-size: cover;
+}
+.lanzamaizvertical{
+    background-image: url('lanzamaiz-vertical.png');
     background-size: cover;
 }
 .lanzaguisantes{
-    background-image: url('lanzaguisantes.jpg');
+    background-image: url('lanzaguisantes-horizontal.png');
+    background-size: cover;
+}
+.lanzaguisantesVertical{
+    background-image: url('lanzaguisantes-vertical.png');
     background-size: cover;
 }
 .hielaguisantes{
-    background-image: url('hielaguisantes.jpg');
+    background-image: url('hielaguisante-horizontal.png');
+    background-size: cover;
+}
+.hielaguisantevertical{
+    background-image: url('hielaguisante-vertical.png');
     background-size: cover;
 }
 .melonpulta{
-  background-image: url('melonpulta.png');
+  background-image: url('melonpulta-horizontal.png');
   background-size: cover;
   }
+ .melonpultavertical{
+ background-image: url('melonpulta-vertical.png');
+   background-size: cover;
+ }
 .carronivera{
-   background-image: url('carronivora.png');
+   background-image: url('carnivora-horizontal.png');
    background-size: cover;
    }
+
+.carroniveravertical{
+      background-image: url('carnivora-vertical.png');
+      background-size: cover;
+      }
 .carrierHorizontalRed{
-    background-image: url('submarinehor_red.png');
+    background-image: url('lanzamaiz-vertical.png');
     background-size: 100% 100%;
     //width: 45px !important;
 }
 .patroalHorizontalRed{
     background-image: url('lanzaguisantesVertical.jpg');
     background-size: 100% 100%;
-    //width: 45px !important;
 }
 
+/* ZOMBIES CLASS*/
 .zombiecomun{
-    background-image: url('zombiecomun.jpg');
+    background-image: url('zombie-horizontal.png');
     background-size: cover;
 }
+
+
+.zombiecomunvertical{
+    background-image: url('zombie-vertical.png');
+    background-size: cover;
+}
+
 .zombielector{
-    background-image: url('zombielector.png');
+    background-image: url('zombielector-horizontal.png');
+    background-size: cover;
+}
+.zombielectorvertical{
+ background-image: url('zombielector-vertical.png');
+    background-size: cover;
+}
+
+.zombiebailarinvertical{
+    background-image: url('dancingzombie-vertical.png');
     background-size: cover;
 }
 .zombiebailarin{
-     background-image: url('zombiebailarin.jpg');
+     background-image: url('dancingzombie-horizontal.png');
      background-size: cover;
 }
 .zombieplayero{
-    background-image: url('zombieplayero.jpg');
+    background-image: url('zombieplayero-horizontal.png');
+    background-size: cover;
+}
+.zombieplayerovertical{
+    background-image: url('zombieplayero-vertical.png');
     background-size: cover;
 }
 .zombistein{
-    background-image: url('zombistein.jpg');
+    background-image: url('zombiestein-horizontal.png');
+    background-size: cover;
+}
+.zombisteinvertical{
+    background-image: url('zombiestein-vertical.png');
     background-size: cover;
 }

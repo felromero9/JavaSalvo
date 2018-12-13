@@ -48,15 +48,93 @@ body{
 }
 
 
-#loginButton, #signupButton{
-  background-image: url('../images/tickmark_submit.png');
+#loginButton{
+   background-image: url('../images/submit_passive.png');
+  background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+ }
+ #loginButton:hover{
+   background-image: url('../images/submit_active.png');
+  background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+ }
+
+#signupButton{
+  background-image: url('../images/submit_passive.png');
  background-size: cover;
   background-size: contain;
   background-repeat: no-repeat;
-  width:90px;
+  width:110px;
   height:90px;
-
 }
+ #signupButton:hover{
+   background-image: url('../images/submit_active.png');
+  background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+ }
+
+#newgame{
+   background-image: url('../images/newgame_passive.png');
+ background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+}
+
+#newgame:hover{
+   background-image: url('../images/newgame_active.png');
+ background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+}
+
+#logoutButton{
+background-image: url('../images/logout_passive.png');
+ background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+}
+
+#logoutButton:hover{
+background-image: url('../images/logout_active.png');
+ background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width:110px;
+   height:90px;
+}
+
+#zombieLabel{
+background-image:url('../images/zombie_selection.jpg');
+background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:80px;
+  height:80px;
+}
+#plantLabel{
+background-image:url('../images/plant_selection.jpg');
+background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:80px;
+  height:80px;
+}
+
 
 table {
     border: 2px black;
@@ -87,20 +165,38 @@ td {
 
     }
 .ul-table{
-    margin-left: 24%;
+    margin-left: 20%;
 }
 
-h1, h2, h3, h4, th, label, input{
+h1, h2, h3, h4, th, label, input, td{
  font-family:"Indie Flower";
  text-align: center;
+ color:white;
 }
 
-.gameList{
-background-color: #A31696;
+li{
+ font-family:"Indie Flower";
+ color:white;
+ font-size:22px;
+ list-style-type:none;
 }
 
-.tableScore{
-background-color: blue;
+a{
+ color:orange;
+ font-size:22px;
+ list-style-type:none;
+}
+
+
+#gameList{
+   background-image:url('../images/bg.png');
+   background-repeat: repeat;
+   margin-top:20px;
+
+}
+#containerAll{
+   background-image:url('../images/bg.png');
+   background-repeat: repeat;
 }
 
 #myForm{
