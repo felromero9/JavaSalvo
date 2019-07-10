@@ -332,9 +332,16 @@ function mapShips(){
                   width = 1;
                   height = ship.cells.length;
                }
+          if(height==1 ){
           grid.addWidget($("<div id='"+ship.type+"'><div class='grid-stack-item-content "+ship.type.toLowerCase()+"'></div><div/>"),
-                       x, y, width, height);
 
+                       x, y, width, height);
+                       }
+                else{
+                grid.addWidget($("<div id='"+ship.type+"'><div class='grid-stack-item-content "+ship.type.toLowerCase()+"vertical'></div><div/>"),
+                        x, y, width, height);
+
+                    }
          })
      }
 }
