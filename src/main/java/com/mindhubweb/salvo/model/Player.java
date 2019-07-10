@@ -1,6 +1,5 @@
 package com.mindhubweb.salvo.model;
 
-import javafx.geometry.Side;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.HashMap;

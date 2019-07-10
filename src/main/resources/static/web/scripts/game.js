@@ -42,7 +42,7 @@ $(function () {
         }
     });
 
-    fetchJson("http://localhost:8080/api/games",{
+    fetchJson("/api/games",{
                     method: 'GET',
                 })
                 .then(function(json){
@@ -56,7 +56,7 @@ $(function () {
                 });
 
 function fetchGame_view(){
-    fetchJson("http://localhost:8080/api/game_view/"+ numberVariable, {
+    fetchJson("/api/game_view/"+ numberVariable, {
         method: 'GET',
 
     })
@@ -150,7 +150,7 @@ function postLoginPlayerOut(userName, userPassword) {
         .done(function () {
             console.log("You are logged out.");
             location.reload();
-            location.href='http://localhost:8080/web/games.html';
+            location.href='/web/games.html';
 
         })
         .fail(function (jqXHR, textStatus) {

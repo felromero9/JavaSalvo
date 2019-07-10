@@ -19,7 +19,7 @@ $(function () {
         });
 //llamado del fetch
 
-        fetchJson("http://localhost:8080/api/games", {
+        fetchJson("/api/games", {
                        method: 'GET',
 
                    })

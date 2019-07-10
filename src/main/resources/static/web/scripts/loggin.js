@@ -115,7 +115,7 @@ jQuery(document).ready(function($) {
             .done(function( ) {
                 console.log( "You are logged out.");
                 location.reload();
-                location.href='http://localhost:8080/web/games.html';
+                location.href='/web/games.html';
 
             })
             .fail(function( jqXHR, textStatus ) {
